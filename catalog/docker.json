@@ -1,0 +1,112 @@
+{
+  "docker": {
+    "program_description": "Docker - containerization platform",
+    "actions": {
+      "remove-container": {
+        "aliases": [
+          "remove container",
+          "delete container",
+          "kill container",
+          "stop and remove container",
+          "clean container",
+          "rm container",
+          "container delete"
+        ],
+        "description": "Removes one or more containers",
+        "commands": [
+          "docker rm <id_or_name>",
+          "docker rm -f <id_or_name>  # force remove even if running",
+          "docker container prune  # removes all stopped containers"
+        ]
+      },
+      "remove-image": {
+        "aliases": [
+          "remove image",
+          "delete image",
+          "clean image",
+          "rm image",
+          "remove docker image",
+          "image delete"
+        ],
+        "description": "Removes a Docker image",
+        "commands": [
+          "docker rmi <id_or_name>",
+          "docker image prune -a  # removes all unused images"
+        ]
+      },
+      "list-containers": {
+        "aliases": [
+          "list containers",
+          "show containers",
+          "view running containers",
+          "ps",
+          "docker ps",
+          "see containers",
+          "containers list"
+        ],
+        "description": "Lists active or all containers",
+        "commands": [
+          "docker ps  # only running ones",
+          "docker ps -a  # all, including stopped ones"
+        ]
+      },
+      "enter-container": {
+        "aliases": [
+          "enter container",
+          "ssh into container",
+          "exec into container",
+          "open terminal in container",
+          "bash into container",
+          "container shell",
+          "get inside container"
+        ],
+        "description": "Opens a terminal inside a running container",
+        "commands": [
+          "docker exec -it <id_or_name> bash",
+          "docker exec -it <id_or_name> sh  # if the image doesn't have bash"
+        ]
+      },
+      "view-logs": {
+        "aliases": [
+          "container logs",
+          "show logs",
+          "view logs",
+          "tail logs",
+          "output logs",
+          "docker logs"
+        ],
+        "description": "Shows the logs of a container",
+        "commands": [
+          "docker logs <id_or_name>",
+          "docker logs -f <id_or_name>  # follows the log in real-time"
+        ]
+      },
+      "stop-container": {
+        "aliases": [
+          "stop container",
+          "halt container",
+          "pause container",
+          "shutdown container",
+          "container stop"
+        ],
+        "description": "Stops a running container without deleting it",
+        "commands": ["docker stop <id_or_name>"]
+      },
+      "clean-all": {
+        "aliases": [
+          "clean all",
+          "purge docker",
+          "clean system",
+          "docker cleanup",
+          "remove unused",
+          "free space",
+          "system prune"
+        ],
+        "description": "Removes unused containers, images, and networks",
+        "commands": [
+          "docker system prune -a  # careful, removes everything unused"
+        ]
+      }
+    }
+  }
+}

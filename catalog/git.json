@@ -1,0 +1,134 @@
+{
+  "git": {
+    "program_description": "Git - version control system",
+    "actions": {
+      "delete-branch": {
+        "aliases": [
+          "remove branch",
+          "delete branch",
+          "kill branch",
+          "nuke branch",
+          "get rid of branch",
+          "drop branch",
+          "branch delete"
+        ],
+        "description": "Deletes a local or remote branch",
+        "commands": [
+          "git branch -d <branch>",
+          "git branch -D <branch>  # force delete even if not merged",
+          "git push origin --delete <branch>  # delete remote branch"
+        ]
+      },
+      "undo-commit": {
+        "aliases": [
+          "undo commit",
+          "revert commit",
+          "rollback commit",
+          "delete commit",
+          "remove commit",
+          "go back one commit",
+          "revert last commit"
+        ],
+        "description": "Removes or undoes the last commit",
+        "commands": [
+          "git reset --soft HEAD~1  # removes commit, keeps changes staged",
+          "git reset --hard HEAD~1  # removes commit and changes (destructive)",
+          "git revert HEAD  # creates a new commit that undoes the previous one (safe for remote)"
+        ]
+      },
+      "remove-file": {
+        "aliases": [
+          "remove file",
+          "delete file",
+          "stop tracking file",
+          "untrack file",
+          "forget file",
+          "remove from git"
+        ],
+        "description": "Removes a file from the repo or stops tracking it",
+        "commands": [
+          "git rm <file>",
+          "git rm --cached <file>  # stops tracking but keeps it on disk"
+        ]
+      },
+      "discard-changes": {
+        "aliases": [
+          "discard changes",
+          "revert changes",
+          "throw away changes",
+          "undo local changes",
+          "reset changes",
+          "scrap changes",
+          "revert uncommitted"
+        ],
+        "description": "Discards uncommitted changes in the working directory",
+        "commands": [
+          "git checkout -- <file>",
+          "git restore <file>  # modern equivalent",
+          "git reset --hard  # discards ALL uncommitted changes"
+        ]
+      },
+      "view-history": {
+        "aliases": [
+          "view history",
+          "commit history",
+          "show commits",
+          "log",
+          "git log",
+          "show timeline",
+          "history log"
+        ],
+        "description": "Shows the commit history",
+        "commands": [
+          "git log --oneline --graph --all",
+          "git log -p <file>  # history of a specific file"
+        ]
+      },
+      "rename-branch": {
+        "aliases": [
+          "rename branch",
+          "change branch name",
+          "ren branch",
+          "mv branch",
+          "branch rename"
+        ],
+        "description": "Changes the name of a branch",
+        "commands": [
+          "git branch -m <old> <new>",
+          "git branch -m <new>  # if you're on the branch you want to rename"
+        ]
+      },
+      "stash-changes": {
+        "aliases": [
+          "stash",
+          "save changes temporarily",
+          "shelve changes",
+          "park changes",
+          "hold changes",
+          "temporary save",
+          "git stash"
+        ],
+        "description": "Saves uncommitted changes to come back to them later",
+        "commands": [
+          "git stash",
+          "git stash pop  # brings the stashed changes back",
+          "git stash list  # view all saved stashes"
+        ]
+      },
+      "squash-commits": {
+        "aliases": [
+          "squash commits",
+          "combine commits",
+          "merge commits",
+          "fold commits",
+          "compress commits",
+          "join commits"
+        ],
+        "description": "Combines multiple commits into one",
+        "commands": [
+          "git rebase -i HEAD~<n>  # choose 'squash' for commits you want to combine"
+        ]
+      }
+    }
+  }
+}
