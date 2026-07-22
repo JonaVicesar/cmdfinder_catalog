@@ -1,0 +1,199 @@
+{
+  "gradle": {
+    "program_description": "Gradle - build automation tool",
+    "actions": {
+      "build": {
+        "aliases": [
+          "build",
+          "compile",
+          "gradle build",
+          "make",
+          "build project",
+          "compile project",
+          "build all"
+        ],
+        "description": "Builds the entire project (compiles code and packages)",
+        "commands": [
+          "./gradlew build  # run build ",
+          "./gradlew build --refresh-dependencies  # refresh dependencies",
+          "./gradlew build -x test  # skip tests",
+          "./gradlew assemble  # build without tests",
+          "./gradlew build --parallel  # parallel build ",
+          "./gradlew build --stacktrace  # show full stacktrace"
+        ]
+      },
+      "run": {
+        "aliases": ["run", "execute", "start app", "run app", "gradle run"],
+        "description": "Runs the application",
+        "commands": [
+          "./gradlew run  # run application ",
+          "./gradlew bootRun  # for Spring Boot ",
+          "./gradlew run --args='<args>'  # pass arguments"
+        ]
+      },
+      "test": {
+        "aliases": [
+          "test",
+          "run tests",
+          "gradle test",
+          "unit tests",
+          "test all"
+        ],
+        "description": "Runs the test suite",
+        "commands": [
+          "./gradlew test  # run all tests ",
+          "./gradlew test --tests '<TestClass>'  # run specific test class",
+          "./gradlew test --tests '<TestClass>.*'  # run all tests in class",
+          "./gradlew test --stacktrace  # show stacktrace for failures"
+        ]
+      },
+      "clean": {
+        "aliases": [
+          "clean",
+          "clean build",
+          "remove build",
+          "clean project",
+          "reset build",
+          "nuke build"
+        ],
+        "description": "Cleans the build directory (removes compiled files)",
+        "commands": [
+          "./gradlew clean  # clean build directory ",
+          "./gradlew clean build  # clean and rebuild",
+          "./gradlew clean --refresh-dependencies  # clean and refresh"
+        ]
+      },
+      "tasks": {
+        "aliases": [
+          "tasks",
+          "list tasks",
+          "show tasks",
+          "available tasks",
+          "gradle tasks",
+          "what can I do"
+        ],
+        "description": "Lists all available Gradle tasks",
+        "commands": [
+          "./gradlew tasks  # show all tasks ",
+          "./gradlew tasks --all  # show all tasks with dependencies",
+          "./gradlew tasks --group=build  # filter by group",
+          "./gradlew --info tasks  # info level logging"
+        ]
+      },
+      "dependencies": {
+        "aliases": [
+          "dependencies",
+          "deps",
+          "show deps",
+          "dependency tree",
+          "gradle deps",
+          "what dependencies"
+        ],
+        "description": "Shows the dependency tree",
+        "commands": [
+          "./gradlew dependencies  # show all dependencies ",
+          "./gradlew dependencies --configuration compileClasspath  # specific config",
+          "./gradlew dependencyInsight --dependency <dep>  # insight into dependency",
+          "./gradlew dependencies > deps.txt  # save to file"
+        ]
+      },
+      "build-unstripped": {
+        "aliases": [
+          "unstripped build",
+          "debug build",
+          "full build",
+          "build with symbols"
+        ],
+        "description": "Builds with debug symbols (unstripped)",
+        "commands": [
+          "./gradlew assembleDebug  # debug build ",
+          "./gradlew assembleRelease  # release build ",
+          "./gradlew assembleDebug -Pandroid.injected.build.model.only=true  # debug with model"
+        ]
+      },
+      "wrapper": {
+        "aliases": [
+          "wrapper",
+          "create wrapper",
+          "generate wrapper",
+          "gradle wrapper"
+        ],
+        "description": "Generates Gradle wrapper files",
+        "commands": [
+          "gradle wrapper  # create wrapper ",
+          "gradle wrapper --gradle-version 8.5  # specify gradle version",
+          "gradle wrapper --distribution-type all  # include source"
+        ]
+      },
+      "init": {
+        "aliases": [
+          "init",
+          "init project",
+          "create project",
+          "new project",
+          "start project"
+        ],
+        "description": "Initializes a new Gradle project",
+        "commands": [
+          "gradle init  # start project wizard ",
+          "gradle init --type java-application  # Java app template ",
+          "gradle init --type kotlin-application  # Kotlin app template",
+          "gradle init --type scala-application  # Scala app template"
+        ]
+      },
+      "build-scan": {
+        "aliases": [
+          "build scan",
+          "scan",
+          "diagnostics",
+          "performance scan",
+          "build report"
+        ],
+        "description": "Generates a build scan for analysis",
+        "commands": [
+          "./gradlew build --scan  # generate build scan ",
+          "./gradlew build --scan -s  # with stacktrace"
+        ]
+      },
+      "refresh": {
+        "aliases": [
+          "refresh",
+          "refresh dependencies",
+          "force refresh",
+          "reset dependencies"
+        ],
+        "description": "Refreshes dependencies in the project",
+        "commands": [
+          "./gradlew build --refresh-dependencies  # refresh dependencies",
+          "./gradlew --refresh-dependencies  # refresh all",
+          "./gradlew clean build --refresh-dependencies  # clean and refresh"
+        ]
+      },
+      "kotlin": {
+        "aliases": ["kotlin build", "kotlin compile", "kotlin gradle"],
+        "description": "Builds using Kotlin-specific tasks",
+        "commands": [
+          "./gradlew compileKotlin  # compile Kotlin code ",
+          "./gradlew compileTestKotlin  # compile test Kotlin code ",
+          "./gradlew compileKotlin -X  # with extra options"
+        ]
+      },
+      "android": {
+        "aliases": [
+          "android build",
+          "apk build",
+          "android compile",
+          "assemble"
+        ],
+        "description": "Android-specific Gradle tasks",
+        "commands": [
+          "./gradlew assemble  # build all APKs ",
+          "./gradlew assembleDebug  # debug APK",
+          "./gradlew assembleRelease  # release APK",
+          "./gradlew bundle  # build Android App Bundle",
+          "./gradlew installDebug  # install to connected device"
+        ]
+      }
+    }
+  }
+}

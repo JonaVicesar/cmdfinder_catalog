@@ -1,0 +1,289 @@
+{
+  "vim": {
+    "program_description": "Vim/Neovim - powerful text editor",
+    "actions": {
+      "save": {
+        "aliases": [
+          "save file",
+          "write",
+          "w",
+          "save changes",
+          "save and continue",
+          "write changes"
+        ],
+        "description": "Saves the current file",
+        "commands": [
+          ":w",
+          ":w <filename>  # save with different name",
+          ":update  # save only if modified"
+        ]
+      },
+      "save-exit": {
+        "aliases": [
+          "save and exit",
+          "wq",
+          "save and quit",
+          "save close",
+          "write quit",
+          "done",
+          "save and bye"
+        ],
+        "description": "Saves the current file and exits vim",
+        "commands": [
+          ":wq",
+          ":x  # save and exit (only if modified)",
+          ":wq!  # force save and exit"
+        ]
+      },
+      "exit": {
+        "aliases": [
+          "quit",
+          "exit",
+          "q",
+          "close vim",
+          "bye",
+          "cancel",
+          "get out",
+          "abort",
+          "leave"
+        ],
+        "description": "Exits vim (fails if unsaved changes)",
+        "commands": [
+          ":q",
+          ":q!  # force exit without saving",
+          ":qa  # quit all tabs",
+          ":wq  # save and exit"
+        ]
+      },
+      "undo": {
+        "aliases": [
+          "undo",
+          "u",
+          "go back",
+          "revert",
+          "undo last change",
+          "take back",
+          "undo change"
+        ],
+        "description": "Undoes the last change",
+        "commands": [
+          "u",
+          "U  # undo all changes on the current line",
+          ":undo <number>  # undo to specific state"
+        ]
+      },
+      "redo": {
+        "aliases": [
+          "redo",
+          "ctrl r",
+          "undo undo",
+          "do again",
+          "restore",
+          "un-undo"
+        ],
+        "description": "Redoes a previously undone change",
+        "commands": ["Ctrl+R", ":redo"]
+      },
+      "delete-line": {
+        "aliases": [
+          "delete line",
+          "dd",
+          "kill line",
+          "remove line",
+          "cut line",
+          "erase line",
+          "delete current line"
+        ],
+        "description": "Deletes the current line",
+        "commands": [
+          "dd",
+          "D  # delete from cursor to end of line",
+          "d$  # delete to end of line",
+          "d^  # delete to beginning of line"
+        ]
+      },
+      "copy-line": {
+        "aliases": [
+          "copy line",
+          "yy",
+          "yank line",
+          "copy current line",
+          "duplicate line"
+        ],
+        "description": "Yanks (copies) the current line",
+        "commands": [
+          "yy",
+          "Y  # yank to end of line",
+          "y$  # yank to end of line",
+          "y^  # yank to beginning of line"
+        ]
+      },
+      "paste": {
+        "aliases": [
+          "paste",
+          "p",
+          "put",
+          "insert copied",
+          "paste after",
+          "paste before"
+        ],
+        "description": "Pastes the yanked or deleted text",
+        "commands": [
+          "p  # paste after cursor",
+          "P  # paste before cursor",
+          "gp  # paste and stay at pasted end",
+          "gP  # paste before and stay"
+        ]
+      },
+      "search": {
+        "aliases": [
+          "search",
+          "/",
+          "find text",
+          "search for",
+          "look for",
+          "find",
+          "locate text"
+        ],
+        "description": "Searches for text in the file",
+        "commands": [
+          "/<pattern>  # search forward",
+          "?<pattern>  # search backward",
+          "n  # next match",
+          "N  # previous match",
+          ":set hlsearch  # highlight matches",
+          ":nohlsearch  # clear highlights"
+        ]
+      },
+      "replace": {
+        "aliases": [
+          "replace",
+          "substitute",
+          "s",
+          "find replace",
+          "search replace",
+          "replace all"
+        ],
+        "description": "Replaces text using search and replace",
+        "commands": [
+          ":%s/<old>/<new>/g  # replace all occurrences in file",
+          ":%s/<old>/<new>/gc  # replace with confirmation",
+          ":s/<old>/<new>/  # replace first occurrence in current line",
+          ":%s/<old>/<new>/gi  # case insensitive"
+        ]
+      },
+      "visual-mode": {
+        "aliases": [
+          "visual",
+          "v",
+          "select",
+          "select mode",
+          "highlight",
+          "select text"
+        ],
+        "description": "Enters visual mode for selecting text",
+        "commands": [
+          "v  # character-wise visual",
+          "V  # line-wise visual",
+          "Ctrl+V  # block visual",
+          "gv  # reselect last visual selection",
+          "o  # move to other end of selection"
+        ]
+      },
+      "insert-mode": {
+        "aliases": [
+          "insert",
+          "i",
+          "write",
+          "start typing",
+          "edit mode",
+          "insert text"
+        ],
+        "description": "Enters insert mode to type text",
+        "commands": [
+          "i  # insert before cursor",
+          "a  # insert after cursor",
+          "I  # insert at beginning of line",
+          "A  # insert at end of line",
+          "o  # insert below line",
+          "O  # insert above line",
+          "Esc  # exit insert mode"
+        ]
+      },
+      "command-mode": {
+        "aliases": ["command", ":", "vim commands", "ex mode", "command line"],
+        "description": "Enters command mode to run vim commands",
+        "commands": [":  # enter command mode", "Esc  # exit command mode"]
+      },
+      "open-file": {
+        "aliases": [
+          "open file",
+          "e",
+          "edit file",
+          "load file",
+          "open another file"
+        ],
+        "description": "Opens another file in vim",
+        "commands": [
+          ":e <filename>",
+          ":e! <filename>  # open and discard changes",
+          ":b <filename>  # switch to buffer",
+          ":bd  # delete buffer"
+        ]
+      },
+      "split-screen": {
+        "aliases": [
+          "split",
+          "sp",
+          "horizontal split",
+          "split window",
+          "two windows",
+          "split screen"
+        ],
+        "description": "Splits the window horizontally or vertically",
+        "commands": [
+          ":sp <filename>  # horizontal split",
+          ":vsp <filename>  # vertical split",
+          "Ctrl+W w  # switch between splits",
+          "Ctrl+W q  # close split",
+          ":only  # keep only current window"
+        ]
+      },
+      "line-numbers": {
+        "aliases": [
+          "show line numbers",
+          "line numbers",
+          "number",
+          "display lines",
+          "show numbers"
+        ],
+        "description": "Shows or hides line numbers",
+        "commands": [
+          ":set number",
+          ":set nu  # short",
+          ":set nonumber",
+          ":set relativenumber  # relative line numbers",
+          ":set rnu  # short"
+        ]
+      },
+      "indent": {
+        "aliases": [
+          "indent",
+          ">>",
+          "<<",
+          "indent line",
+          "outdent",
+          "unindent",
+          "shift text"
+        ],
+        "description": "Indents or unindents lines",
+        "commands": [
+          ">>  # indent current line",
+          "<<  # unindent current line",
+          "=  # auto-indent current line",
+          "gg=G  # auto-indent entire file"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "java": {
+    "program_description": "Java - programming language runtime",
+    "actions": {
+      "compile": {
+        "aliases": [
+          "compile",
+          "javac",
+          "compile java",
+          "make class",
+          "compile code",
+          "build java"
+        ],
+        "description": "Compiles Java source files into class files",
+        "commands": [
+          "javac <file>.java  # compile single file ",
+          "javac <file1>.java <file2>.java  # compile multiple",
+          "javac -d <directory> <file>.java  # specify output directory",
+          "javac -cp <classpath> <file>.java  # specify classpath",
+          "javac -source 17 -target 17 <file>.java  # specify version"
+        ]
+      },
+      "run": {
+        "aliases": [
+          "run",
+          "execute",
+          "java run",
+          "run class",
+          "run program",
+          "start java",
+          "execute class"
+        ],
+        "description": "Runs a compiled Java class",
+        "commands": [
+          "java <ClassName>  # run class ",
+          "java -cp <classpath> <ClassName>  # specify classpath",
+          "java -jar <file>.jar  # run JAR file ",
+          "java -Xmx1024m <ClassName>  # set max heap memory ",
+          "java -version  # check Java version"
+        ]
+      },
+      "jar": {
+        "aliases": [
+          "jar",
+          "create jar",
+          "package jar",
+          "java archive",
+          "make jar",
+          "archive classes"
+        ],
+        "description": "Creates a JAR file from compiled classes",
+        "commands": [
+          "jar cf <file>.jar <class-files>  # create JAR ",
+          "jar cvf <file>.jar <class-files>  # verbose output",
+          "jar cvf <file>.jar *  # package everything",
+          "jar tf <file>.jar  # view contents",
+          "jar xf <file>.jar  # extract JAR",
+          "jar -cmf MANIFEST.MF <file>.jar <class-files>  # with manifest"
+        ]
+      },
+      "version": {
+        "aliases": [
+          "version",
+          "java version",
+          "check java",
+          "what version",
+          "javac version"
+        ],
+        "description": "Shows the installed Java version",
+        "commands": [
+          "java -version  # show runtime version ",
+          "javac -version  # show compiler version"
+        ]
+      },
+      "classpath": {
+        "aliases": [
+          "classpath",
+          "cp",
+          "set classpath",
+          "add jar to classpath",
+          "java classpath"
+        ],
+        "description": "Specifies the classpath for Java compilation/execution",
+        "commands": [
+          "javac -cp .:lib/* <file>.java  # compile with classpath ",
+          "java -cp .:lib/* <ClassName>  # run with classpath",
+          "java -cp /path/to/jars/* <ClassName>  # include all jars"
+        ]
+      },
+      "debug": {
+        "aliases": ["debug", "debug mode", "java debug", "remote debug"],
+        "description": "Runs Java with debugging enabled for remote debugging",
+        "commands": [
+          "java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 <ClassName>  # debug mode ",
+          "java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000 <ClassName>  # alternative",
+          "java -jar -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000 app.jar  # debug jar"
+        ]
+      },
+      "memory": {
+        "aliases": [
+          "memory",
+          "heap size",
+          "increase memory",
+          "max heap",
+          "set memory"
+        ],
+        "description": "Runs Java with custom memory settings",
+        "commands": [
+          "java -Xmx2048m <ClassName>  # max heap 2GB ",
+          "java -Xms512m -Xmx2048m <ClassName>  # initial and max heap",
+          "java -XX:MaxPermSize=256m <ClassName>  # max perm gen (Java 8 and older)",
+          "java -Xms512m -Xmx2048m -XX:+UseG1GC <ClassName>  # with GC tuning"
+        ]
+      },
+      "jar-export": {
+        "aliases": [
+          "export jar",
+          "make executable jar",
+          "create executable jar"
+        ],
+        "description": "Creates an executable JAR with a manifest",
+        "commands": [
+          "jar cfe <file>.jar <Main-Class> <class-files>  # specify main class ",
+          "echo Main-Class: <Main-Class> > MANIFEST.MF && jar cfm <file>.jar MANIFEST.MF <class-files>  # custom manifest "
+        ]
+      }
+    }
+  }
+}

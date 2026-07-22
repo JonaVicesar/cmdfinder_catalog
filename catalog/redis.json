@@ -1,0 +1,97 @@
+{
+  "redis": {
+    "program_description": "Redis - in-memory data structure store (CLI and commands)",
+    "actions": {
+      "connect": {
+        "aliases": ["connect", "redis-cli", "enter", "open redis"],
+        "description": "Connects to a Redis server with the CLI [citation:3][citation:8]",
+        "commands": [
+          "redis-cli",
+          "redis-cli -u redis://<user>:<password>@<host>:<port>  # connection string",
+          "redis-cli -h <host> -p <port> -a <password>"
+        ]
+      },
+      "set-key": {
+        "aliases": ["set", "add", "store", "save key"],
+        "description": "Sets a key with a string value [citation:3][citation:8]",
+        "commands": ["SET <key> <value>"]
+      },
+      "get-key": {
+        "aliases": ["get", "read", "retrieve", "fetch key"],
+        "description": "Gets the string value of a key [citation:3][citation:8]",
+        "commands": ["GET <key>"]
+      },
+      "delete-key": {
+        "aliases": ["del", "delete", "remove", "clear key"],
+        "description": "Deletes one or more keys [citation:3][citation:8]",
+        "commands": ["DEL <key> [key ...]"]
+      },
+      "key-exists": {
+        "aliases": ["exists", "check", "has key"],
+        "description": "Checks if a key exists [citation:3]",
+        "commands": ["EXISTS <key>"]
+      },
+      "set-expire": {
+        "aliases": ["expire", "set ttl", "timeout", "autodelete"],
+        "description": "Sets an expiration time on a key (in seconds) [citation:3]",
+        "commands": ["EXPIRE <key> <seconds>"]
+      },
+      "check-ttl": {
+        "aliases": ["ttl", "time left", "expiry", "how long"],
+        "description": "Shows the remaining time to live of a key [citation:3][citation:8]",
+        "commands": ["TTL <key>"]
+      },
+      "list-keys": {
+        "aliases": ["keys", "list", "find", "search keys"],
+        "description": "Lists all keys matching a pattern (use with care!) [citation:3][citation:8]",
+        "commands": [
+          "KEYS <pattern>",
+          "SCAN 0 MATCH <pattern> COUNT <n>  # for large datasets"
+        ]
+      },
+      "hash-set": {
+        "aliases": ["hset", "hash add", "object set"],
+        "description": "Sets a field in a hash [citation:3][citation:8]",
+        "commands": ["HSET <key> <field> <value>"]
+      },
+      "hash-get": {
+        "aliases": ["hget", "hash get", "object get"],
+        "description": "Gets a field from a hash [citation:3][citation:8]",
+        "commands": ["HGET <key> <field>"]
+      },
+      "list-push": {
+        "aliases": ["lpush", "rpush", "list add", "push to list"],
+        "description": "Pushes a value to a list (from left or right) [citation:3][citation:8]",
+        "commands": [
+          "LPUSH <key> <value>  # left/head",
+          "RPUSH <key> <value>  # right/tail"
+        ]
+      },
+      "list-pop": {
+        "aliases": ["lpop", "rpop", "list pop", "pop from list"],
+        "description": "Pops a value from a list (from left or right) [citation:8]",
+        "commands": ["LPOP <key>", "RPOP <key>"]
+      },
+      "list-range": {
+        "aliases": ["lrange", "list range", "view list", "show list"],
+        "description": "Gets a range of elements from a list [citation:3][citation:8]",
+        "commands": ["LRANGE <key> <start> <stop>  # 0 -1 for all"]
+      },
+      "set-add": {
+        "aliases": ["sadd", "set add", "add to set"],
+        "description": "Adds a member to a set [citation:3][citation:8]",
+        "commands": ["SADD <key> <member>"]
+      },
+      "set-members": {
+        "aliases": ["smembers", "set members", "view set", "show set"],
+        "description": "Gets all members of a set [citation:3][citation:8]",
+        "commands": ["SMEMBERS <key>"]
+      },
+      "info": {
+        "aliases": ["info", "server info", "stats", "monitoring", "metrics"],
+        "description": "Returns information and statistics about the server [citation:8]",
+        "commands": ["INFO [section]  # e.g., INFO keyspace, INFO memory"]
+      }
+    }
+  }
+}

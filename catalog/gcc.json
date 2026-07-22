@@ -1,0 +1,351 @@
+{
+  "gcc": {
+    "program_description": "GCC - GNU Compiler Collection (C/C++ compiler)",
+    "actions": {
+      "compile": {
+        "aliases": [
+          "compile",
+          "build",
+          "make it",
+          "compile c",
+          "gcc compile",
+          "build program",
+          "create executable",
+          "make binary",
+          "generate program"
+        ],
+        "description": "Compiles a C/C++ source file into an executable",
+        "commands": [
+          "gcc source.c  # compiles to a.out (default)",
+          "gcc source.c -o my_program  # compile with custom name [citation:1]",
+          "gcc source1.c source2.c -o program  # compile multiple files [citation:1]",
+          "g++ source.cpp -o my_program  # compile C++ with g++ [citation:5]",
+          "gcc source.c -o program && ./program  # compile and run"
+        ]
+      },
+      "compile-only": {
+        "aliases": [
+          "compile only",
+          "object file",
+          "dont link",
+          "just compile",
+          "make object",
+          "generate object",
+          ".o only",
+          "stop at object"
+        ],
+        "description": "Compiles to object file without linking (for multi-file projects)",
+        "commands": [
+          "gcc -c source.c  # generates source.o [citation:1]",
+          "gcc -c source1.c source2.c  # compile multiple without linking [citation:1]",
+          "gcc -c -o custom.o source.c  # specify object filename",
+          "g++ -c source.cpp -o source.o  # C++ object file [citation:5]"
+        ]
+      },
+      "link": {
+        "aliases": [
+          "link",
+          "link object files",
+          "combine objects",
+          "link all",
+          "final build",
+          "link objects",
+          "link multiple files"
+        ],
+        "description": "Links object files into an executable",
+        "commands": [
+          "gcc file1.o file2.o -o program  # link object files [citation:1]",
+          "gcc *.o -o program  # link all object files",
+          "g++ file1.o file2.o -o program  # C++ linking"
+        ]
+      },
+      "debug": {
+        "aliases": [
+          "debug",
+          "debug mode",
+          "add debug info",
+          "gdb ready",
+          "debug symbols",
+          "for debugging",
+          "make debuggable"
+        ],
+        "description": "Compiles with debugging symbols for GDB",
+        "commands": [
+          "gcc -g source.c -o program  # add debug symbols [citation:2]",
+          "gcc -ggdb source.c -o program  # GDB-specific debugging [citation:12]",
+          "gcc -g -O0 source.c -o program  # debug with no optimization [citation:2]",
+          "g++ -g -std=c++17 source.cpp -o program  # C++ with debug [citation:5]"
+        ]
+      },
+      "warnings": {
+        "aliases": [
+          "warnings",
+          "show warnings",
+          "all warnings",
+          "pedantic",
+          "strict mode",
+          "extra warnings",
+          "check code",
+          "find problems",
+          "be strict"
+        ],
+        "description": "Compiles with warning flags to catch potential issues",
+        "commands": [
+          "gcc -Wall source.c -o program  # all standard warnings [citation:2]",
+          "gcc -Wall -Wextra source.c -o program  # extra warnings [citation:5]",
+          "gcc -Wall -Wextra -pedantic source.c -o program  # strict ISO C [citation:2]",
+          "gcc -Wall -Werror source.c -o program  # treat warnings as errors [citation:5]",
+          "gcc -Wall -Wextra -Wshadow -Wconversion -Wsign-conversion source.c -o program  # comprehensive warnings [citation:5]",
+          "gcc -Wall -Wextra -pedantic -Werror -Wshadow -Wsign-conversion source.c -o program  # production ready [citation:5]"
+        ]
+      },
+      "optimize": {
+        "aliases": [
+          "optimize",
+          "fast code",
+          "optimization",
+          "speed up",
+          "performance",
+          "O2",
+          "O3",
+          "make fast",
+          "optimize code"
+        ],
+        "description": "Compiles with optimization levels (0-3)",
+        "commands": [
+          "gcc -O0 source.c -o program  # no optimization (default)",
+          "gcc -O1 source.c -o program  # basic optimization",
+          "gcc -O2 source.c -o program  # good optimization [citation:5]",
+          "gcc -O3 source.c -o program  # aggressive optimization (may increase size)",
+          "gcc -O2 -Wall source.c -o program  # optimize with warnings [citation:5]",
+          "gcc -Os source.c -o program  # optimize for size"
+        ]
+      },
+      "include": {
+        "aliases": [
+          "include",
+          "include path",
+          "add include",
+          "header path",
+          "add headers",
+          "search path",
+          "-I"
+        ],
+        "description": "Adds directories to search for header files",
+        "commands": [
+          "gcc -I /path/to/include source.c -o program  # add include path [citation:5]",
+          "gcc -I./libs -I/usr/local/include source.c -o program  # multiple paths",
+          "gcc -I$(pwd)/include source.c -o program  # use current directory",
+          "gcc -I /path/to/include -Wall source.c -o program  # with warnings"
+        ]
+      },
+      "library": {
+        "aliases": [
+          "library",
+          "link library",
+          "add lib",
+          "lib path",
+          "static library",
+          "dynamic library",
+          "shared library",
+          "linking lib"
+        ],
+        "description": "Links with external libraries",
+        "commands": [
+          "gcc source.c -lm -o program  # link math library [citation:1]",
+          "gcc source.c -lpthread -o program  # link pthreads",
+          "gcc -L /path/to/lib -lfoo source.c -o program  # specify lib path and name [citation:1]",
+          "gcc source.c -static -lmylib -o program  # force static linking [citation:1]",
+          "gcc source.c -shared -fPIC -o libmylib.so  # create shared library [citation:7]",
+          "gcc source.c -lfoo -o program  # link libfoo.a or libfoo.so"
+        ]
+      },
+      "std": {
+        "aliases": [
+          "standard",
+          "c standard",
+          "c version",
+          "c11",
+          "c17",
+          "c99",
+          "ansi",
+          "iso c",
+          "strict c"
+        ],
+        "description": "Specifies the C/C++ language standard to use",
+        "commands": [
+          "gcc -std=c99 source.c -o program  # C99 standard [citation:3]",
+          "gcc -std=c11 source.c -o program  # C11 standard",
+          "gcc -std=c17 source.c -o program  # C17 standard [citation:3]",
+          "g++ -std=c++11 source.cpp -o program  # C++11 [citation:5]",
+          "g++ -std=c++14 source.cpp -o program  # C++14",
+          "g++ -std=c++17 source.cpp -o program  # C++17 [citation:5]",
+          "g++ -std=c++20 source.cpp -o program  # C++20",
+          "gcc -ansi source.c -o program  # ANSI/ISO C standard [citation:7]"
+        ]
+      },
+      "preprocess": {
+        "aliases": [
+          "preprocess",
+          "preprocessor",
+          "expand macros",
+          "see includes",
+          "preprocessed output",
+          "E flag",
+          "preproc only"
+        ],
+        "description": "Runs only the preprocessor to expand macros and includes",
+        "commands": [
+          "gcc -E source.c  # output preprocessed code [citation:7]",
+          "gcc -E source.c -o source.i  # save preprocessed output [citation:12]",
+          "gcc -E -DDEBUG source.c  # with macro definitions"
+        ]
+      },
+      "assembly": {
+        "aliases": [
+          "assembly",
+          "generate assembly",
+          "asm output",
+          "see assembly",
+          "S flag",
+          "view asm"
+        ],
+        "description": "Generates assembly code from source",
+        "commands": [
+          "gcc -S source.c  # generates source.s [citation:12]",
+          "gcc -S -O2 source.c -o optimized.s  # optimized assembly",
+          "gcc -S -masm=intel source.c  # Intel syntax assembly",
+          "gcc -S -fverbose-asm source.c  # verbose assembly comments"
+        ]
+      },
+      "define": {
+        "aliases": [
+          "define macro",
+          "macro",
+          "set define",
+          "compile with define",
+          "-D",
+          "preprocessor define"
+        ],
+        "description": "Defines a macro at compile time",
+        "commands": [
+          "gcc -DDEBUG source.c -o program  # define DEBUG macro [citation:7]",
+          "gcc -DVERSION=\\\"1.0\\\" source.c -o program  # define with value",
+          "gcc -D__DEBUG__ -Wall source.c -o program  # common debug macro",
+          "gcc -D_GNU_SOURCE source.c -o program  # GNU extensions"
+        ]
+      },
+      "profiling": {
+        "aliases": [
+          "profile",
+          "profiling",
+          "performance profiling",
+          "gprof",
+          "pg flag",
+          "profiling info"
+        ],
+        "description": "Compiles with profiling information for gprof",
+        "commands": [
+          "gcc -pg source.c -o program  # compile for profiling [citation:3]",
+          "gcc -pg -O2 source.c -o program  # profile with optimization",
+          "./program && gprof program gmon.out > analysis.txt  # generate report"
+        ]
+      },
+      "optimize-warn": {
+        "aliases": [
+          "optimize and warn",
+          "safe optimize",
+          "O2 with warnings",
+          "optimize strict",
+          "build production"
+        ],
+        "description": "Compiles with optimization and full warnings (production ready)",
+        "commands": [
+          "gcc -O2 -Wall -Wextra -Werror -pedantic source.c -o program  # safe production build [citation:5]",
+          "gcc -O2 -Wall -Wextra -Wshadow -Wconversion -Wsign-conversion source.c -o program  # comprehensive",
+          "g++ -O2 -Wall -Wextra -Werror -std=c++17 source.cpp -o program  # C++ production [citation:5]"
+        ]
+      },
+      "profile-guided": {
+        "aliases": [
+          "profile guided",
+          "pgo",
+          "feedback optimization",
+          "auto profile",
+          "profile optimize"
+        ],
+        "description": "Profile-guided optimization (feedback-based)",
+        "commands": [
+          "gcc -fprofile-generate source.c -o program && ./program  # generate profile data",
+          "gcc -fprofile-use source.c -o program  # use profile data [citation:3]",
+          "gcc -fprofile-generate -fprofile-use source.c -o program  # combined"
+        ]
+      },
+      "shared-object": {
+        "aliases": [
+          "shared lib",
+          "dynamic lib",
+          "so file",
+          "shared object",
+          "build shared",
+          "library file"
+        ],
+        "description": "Creates a shared library (.so)",
+        "commands": [
+          "gcc -shared -fPIC source.c -o libmylib.so  # create shared library [citation:7]",
+          "gcc -shared -fPIC -Wl,-soname,libmylib.so.1 -o libmylib.so.1.0 file1.o file2.o  # versioned lib",
+          "gcc -shared -fPIC -O2 source.c -o libmylib.so  # optimized shared lib"
+        ]
+      },
+      "verbose": {
+        "aliases": [
+          "verbose",
+          "show details",
+          "whats happening",
+          "verbose mode",
+          "debug compile",
+          "show commands"
+        ],
+        "description": "Shows detailed compilation process",
+        "commands": [
+          "gcc -v source.c -o program  # show compiler details [citation:3]",
+          "gcc -### source.c  # show commands but don't run [citation:3]",
+          "gcc -v -O2 source.c -o program  # verbose with optimization",
+          "gcc -### -Wall source.c  # show what would happen"
+        ]
+      },
+      "arm-cross": {
+        "aliases": [
+          "arm compile",
+          "cross compile arm",
+          "arm gcc",
+          "compile for arm",
+          "arm cross",
+          "embedded arm"
+        ],
+        "description": "Cross-compiles for ARM architecture",
+        "commands": [
+          "arm-linux-gnueabihf-gcc source.c -o program  # compile for ARM [citation:3]",
+          "arm-linux-gnueabihf-gcc -static source.c -o program  # static ARM build",
+          "arm-linux-gnueabihf-g++ source.cpp -o program  # C++ for ARM"
+        ]
+      },
+      "dump": {
+        "aliases": [
+          "dump info",
+          "compiler info",
+          "dump specs",
+          "dump version",
+          "machine info"
+        ],
+        "description": "Shows compiler information and specifications",
+        "commands": [
+          "gcc -dumpversion  # show GCC version [citation:8]",
+          "gcc -dumpmachine  # show target machine [citation:8]",
+          "gcc -dumpspecs  # show compiler specs [citation:8]",
+          "gcc --help=warnings  # list all warning options [citation:5]"
+        ]
+      }
+    }
+  }
+}

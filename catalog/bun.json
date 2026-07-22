@@ -1,0 +1,290 @@
+{
+  "bun": {
+    "program_description": "Bun - fast all-in-one JavaScript runtime & package manager",
+    "actions": {
+      "install": {
+        "aliases": [
+          "install",
+          "i",
+          "bun install",
+          "get deps",
+          "install deps",
+          "setup",
+          "fetch packages",
+          "download deps",
+          "install all",
+          "npm i but fast",
+          "speed install",
+          "bun i"
+        ],
+        "description": "Installs all dependencies from package.json (up to 25x faster than npm)",
+        "commands": [
+          "bun install  # install all deps",
+          "bun i  # shorthand",
+          "bun install --verbose  # debug logging",
+          "bun install --silent  # no logging",
+          "bun install --production  # production only",
+          "bun install --frozen-lockfile  # exact lockfile versions",
+          "bun ci  # install with frozen lockfile",
+          "bun install --dry-run  # preview what will install",
+          "bun install --force  # reinstall all"
+        ]
+      },
+      "add": {
+        "aliases": [
+          "add",
+          "add package",
+          "install package",
+          "get package",
+          "bun add",
+          "add dep",
+          "add dependency",
+          "install dep",
+          "need this",
+          "gimme",
+          "add pkg"
+        ],
+        "description": "Adds a package as a dependency",
+        "commands": [
+          "bun add <package>  # add as dependency",
+          "bun add -D <package>  # add as devDependency",
+          "bun add -O <package>  # add as optionalDependency",
+          "bun add --peer <package>  # add as peerDependency",
+          "bun add <package>@latest  # install latest version",
+          "bun add <package>@1.2.3  # install specific version",
+          "bun add github:user/repo  # install from GitHub",
+          "bun add --global <package>  # global install"
+        ]
+      },
+      "remove": {
+        "aliases": [
+          "remove",
+          "rm",
+          "uninstall",
+          "delete",
+          "bun remove",
+          "remove dep",
+          "delete package",
+          "get rid of",
+          "kill package",
+          "uninstall package",
+          "bye package"
+        ],
+        "description": "Removes a package from dependencies",
+        "commands": [
+          "bun remove <package>",
+          "bun rm <package>  # shorthand",
+          "bun remove -D <package>  # remove devDependency"
+        ]
+      },
+      "update": {
+        "aliases": [
+          "update",
+          "up",
+          "upgrade",
+          "bun update",
+          "update deps",
+          "refresh packages",
+          "upgrade deps",
+          "latest plz"
+        ],
+        "description": "Updates packages to their latest versions",
+        "commands": [
+          "bun update  # update all",
+          "bun update <package>  # update specific",
+          "bun update --latest  # update to latest ignoring ranges"
+        ]
+      },
+      "run": {
+        "aliases": [
+          "run",
+          "start",
+          "execute",
+          "bun run",
+          "run script",
+          "start script",
+          "launch",
+          "go"
+        ],
+        "description": "Runs a script from package.json or a file",
+        "commands": [
+          "bun run <script>",
+          "bun <script>  # shorthand",
+          "bun run dev",
+          "bun run build",
+          "bun run start",
+          "bun run test",
+          "bun <file>.js  # directly execute file"
+        ]
+      },
+      "bunx": {
+        "aliases": [
+          "bunx",
+          "npx",
+          "run binary",
+          "execute package",
+          "bun x",
+          "run without install",
+          "one-off",
+          "temporary package",
+          "try package"
+        ],
+        "description": "Runs a package binary without installing it globally",
+        "commands": [
+          "bunx <package>",
+          "bunx create-next-app my-app",
+          "bunx vitest",
+          "bunx prettier --write .",
+          "bunx <package> <args>"
+        ]
+      },
+      "test": {
+        "aliases": [
+          "test",
+          "bun test",
+          "run tests",
+          "unit tests",
+          "test all",
+          "check tests"
+        ],
+        "description": "Runs tests using Bun's built-in test runner",
+        "commands": [
+          "bun test  # run all tests",
+          "bun test --watch  # watch mode",
+          "bun test --coverage  # coverage report",
+          "bun test --retry 3  # retry flaky tests",
+          "bun test <file.test.ts>"
+        ]
+      },
+      "build": {
+        "aliases": [
+          "build",
+          "bundle",
+          "compile",
+          "bun build",
+          "bundle app",
+          "pack",
+          "dist"
+        ],
+        "description": "Bundles your application for production",
+        "commands": [
+          "bun build <entry>.js --outdir ./dist",
+          "bun build --compile --target=browser ./index.html  # compile to HTML",
+          "bun build --target=bun --outfile=app",
+          "bun build --minify --sourcemap"
+        ]
+      },
+      "repl": {
+        "aliases": [
+          "repl",
+          "console",
+          "interactive",
+          "bun shell",
+          "js playground",
+          "try js",
+          "playground"
+        ],
+        "description": "Opens Bun's interactive REPL (native, 20x faster)",
+        "commands": [
+          "bun repl",
+          "bun  # also opens REPL",
+          ".help  # in REPL",
+          ".clear  # clear screen",
+          ".exit  # exit REPL",
+          ".load <file>  # load file",
+          ".save <file>  # save session"
+        ]
+      },
+      "init": {
+        "aliases": [
+          "init",
+          "new project",
+          "create project",
+          "start project",
+          "bun init",
+          "initialize"
+        ],
+        "description": "Creates a new package.json",
+        "commands": [
+          "bun init  # interactive",
+          "bun init -y  # skip prompts",
+          "bun init --yes  # same as -y"
+        ]
+      },
+      "upgrade": {
+        "aliases": [
+          "upgrade",
+          "upgrade bun",
+          "update bun",
+          "bun upgrade",
+          "self-update",
+          "new version"
+        ],
+        "description": "Upgrades Bun to the latest version",
+        "commands": [
+          "bun upgrade",
+          "bun upgrade --stable",
+          "bun upgrade --canary"
+        ]
+      },
+      "pm-cache": {
+        "aliases": [
+          "cache",
+          "clear cache",
+          "clean cache",
+          "bun cache",
+          "pm cache",
+          "delete cache",
+          "purge cache"
+        ],
+        "description": "Clears Bun's package cache",
+        "commands": ["bun pm cache rm", "rm -rf ~/.bun/install/cache  # manual"]
+      },
+      "link": {
+        "aliases": [
+          "link",
+          "symlink",
+          "local link",
+          "bun link",
+          "link package"
+        ],
+        "description": "Links a local package for development",
+        "commands": [
+          "bun link  # in package directory",
+          "bun link <package>  # link to project",
+          "bun link --help"
+        ]
+      },
+      "publish": {
+        "aliases": [
+          "publish",
+          "npm publish",
+          "release",
+          "deploy package",
+          "push package"
+        ],
+        "description": "Publishes your package to npm registry",
+        "commands": [
+          "bun publish",
+          "bun publish --dry-run",
+          "bun publish --access public"
+        ]
+      },
+      "clean": {
+        "aliases": [
+          "clean",
+          "clean deps",
+          "remove node_modules",
+          "fresh start",
+          "nuke deps",
+          "reset deps"
+        ],
+        "description": "Removes dependencies and lockfile for a clean reinstall",
+        "commands": [
+          "rm -rf node_modules bun.lock",
+          "bun install  # reinstall fresh"
+        ]
+      }
+    }
+  }
+}

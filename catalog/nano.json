@@ -1,0 +1,245 @@
+{
+  "nano": {
+    "program_description": "nano - simple terminal-based text editor",
+    "actions": {
+      "open": {
+        "aliases": [
+          "open",
+          "edit",
+          "nano",
+          "open file",
+          "edit file",
+          "nano edit",
+          "open with nano",
+          "start nano"
+        ],
+        "description": "Opens a file in nano text editor",
+        "commands": [
+          "nano <file>  # open file [citation:12]",
+          "nano -l <file>  # show line numbers",
+          "nano -w <file>  # disable word wrap",
+          "nano -i <file>  # auto-indent mode",
+          "nano -m <file>  # mouse support",
+          "nano -B <file>  # backup original file",
+          "nano +<line> <file>  # open at specific line"
+        ]
+      },
+      "save": {
+        "aliases": [
+          "save",
+          "ctrl o",
+          "save file",
+          "write file",
+          "save as",
+          "save current",
+          "write output"
+        ],
+        "description": "Saves the current file",
+        "commands": [
+          "Ctrl+O  # save the file (WriteOut) [citation:3][citation:9]",
+          "Ctrl+O <filename>  # save as new filename [citation:12]",
+          "Ctrl+O + Enter  # confirm save [citation:9]",
+          "Ctrl+S  # alternative save (if enabled) [citation:3]"
+        ]
+      },
+      "exit": {
+        "aliases": [
+          "exit",
+          "quit",
+          "ctrl x",
+          "close nano",
+          "get out",
+          "leave nano",
+          "bye nano",
+          "fuck this",
+          "i give up",
+          "abort mission"
+        ],
+        "description": "Exits the nano editor",
+        "commands": [
+          "Ctrl+X  # exit nano [citation:3][citation:9]",
+          "Ctrl+X + Y + Enter  # save and exit [citation:9]",
+          "Ctrl+X + N  # exit without saving [citation:9]",
+          "Ctrl+X + Y  # save and exit (prompt for filename)"
+        ]
+      },
+      "search": {
+        "aliases": [
+          "search",
+          "find",
+          "ctrl w",
+          "look for",
+          "find text",
+          "search text"
+        ],
+        "description": "Searches for text in the current file",
+        "commands": [
+          "Ctrl+W  # start forward search [citation:3][citation:9]",
+          "Ctrl+B  # start backward search [citation:3]",
+          "Alt+F  # find next occurrence forward [citation:3]",
+          "Alt+B  # find next occurrence backward [citation:3]",
+          "Ctrl+W + Enter  # repeat last search [citation:9]"
+        ]
+      },
+      "replace": {
+        "aliases": [
+          "replace",
+          "find replace",
+          "search replace",
+          "ctrl backslash",
+          "replace all",
+          "substitute"
+        ],
+        "description": "Searches and replaces text in the current file",
+        "commands": [
+          "Ctrl+\\  # start replace session (Ctrl+Shift+?) [citation:9][citation:12]",
+          "Alt+R  # alternative replace command [citation:3]",
+          "Ctrl+\\ + <search> + Enter + <replace> + Enter  # replace [citation:9]",
+          "Ctrl+\\ + A  # replace all matches [citation:9]"
+        ]
+      },
+      "cut": {
+        "aliases": [
+          "cut",
+          "cut line",
+          "ctrl k",
+          "delete line",
+          "remove line",
+          "kill line",
+          "cut text"
+        ],
+        "description": "Cuts the current line or selected text to cutbuffer",
+        "commands": [
+          "Ctrl+K  # cut current line [citation:3][citation:9]",
+          "Alt+A + Ctrl+K  # cut selected text [citation:12]",
+          "Alt+T  # cut until end of buffer [citation:3]",
+          "Ctrl+H  # delete character before cursor [citation:3]"
+        ]
+      },
+      "copy": {
+        "aliases": [
+          "copy",
+          "copy line",
+          "alt 6",
+          "yank",
+          "copy text",
+          "copy line"
+        ],
+        "description": "Copies the current line or selected text to cutbuffer",
+        "commands": [
+          "Alt+6  # copy current line [citation:3][citation:9]",
+          "Alt+A + Alt+6  # copy selected text [citation:12]",
+          "Alt+A  # start selection (mark) [citation:3]"
+        ]
+      },
+      "paste": {
+        "aliases": ["paste", "ctrl u", "put", "insert", "paste text", "uncut"],
+        "description": "Pastes the contents of the cutbuffer",
+        "commands": [
+          "Ctrl+U  # paste from cutbuffer [citation:3][citation:9]",
+          "Ctrl+U  # paste at cursor position [citation:12]"
+        ]
+      },
+      "undo": {
+        "aliases": [
+          "undo",
+          "alt u",
+          "go back",
+          "revert",
+          "undo last",
+          "take back",
+          "oops",
+          "my bad",
+          "undo that"
+        ],
+        "description": "Undoes the last action",
+        "commands": [
+          "Alt+U  # undo last action [citation:3][citation:9]",
+          "Alt+U multiple times  # undo multiple actions [citation:12]"
+        ]
+      },
+      "redo": {
+        "aliases": ["redo", "alt e", "undo undo", "do again", "restore"],
+        "description": "Redoes a previously undone action",
+        "commands": [
+          "Alt+E  # redo last undone action [citation:3][citation:9]",
+          "Alt+E multiple times  # redo multiple actions [citation:12]"
+        ]
+      },
+      "go-to-line": {
+        "aliases": [
+          "go to line",
+          "goto line",
+          "jump to line",
+          "alt g",
+          "line number"
+        ],
+        "description": "Jumps to a specific line number",
+        "commands": [
+          "Alt+G  # go to line [citation:3][citation:12]",
+          "Alt+G + <line-number> + Enter  # jump to specified line"
+        ]
+      },
+      "line-numbers": {
+        "aliases": [
+          "show line numbers",
+          "line numbers",
+          "toggle line numbers",
+          "alt n",
+          "enable line numbers"
+        ],
+        "description": "Toggles line number display",
+        "commands": [
+          "Alt+N  # toggle line numbers [citation:3]",
+          "nano -l <file>  # start with line numbers [citation:12]"
+        ]
+      },
+      "select-text": {
+        "aliases": ["select", "mark", "alt a", "highlight", "select text"],
+        "description": "Marks text for cutting or copying",
+        "commands": [
+          "Alt+A  # set or unset the mark [citation:3][citation:12]",
+          "Ctrl+Shift+^  # mark from cursor position [citation:12]",
+          "Alt+A + navigate  # select text [citation:9]"
+        ]
+      },
+      "help": {
+        "aliases": [
+          "help",
+          "ctrl g",
+          "show shortcuts",
+          "get help",
+          "help menu"
+        ],
+        "description": "Shows the help menu with all shortcuts",
+        "commands": [
+          "Ctrl+G  # display help menu [citation:3][citation:9]",
+          "Ctrl+G again  # close help menu"
+        ]
+      },
+      "save-exit": {
+        "aliases": ["save and exit", "save close", "save and quit", "ctrl x y"],
+        "description": "Saves the current file and exits nano",
+        "commands": [
+          "Ctrl+X + Y + Enter  # save and exit [citation:12]",
+          "Ctrl+X + Y  # save and exit (will prompt for filename)"
+        ]
+      },
+      "indent": {
+        "aliases": [
+          "indent",
+          "tab",
+          "shift tab",
+          "indent line",
+          "unindent",
+          "outdent"
+        ],
+        "description": "Indents or unindents selected text or current line",
+        "commands": [
+          "Tab  # indent marked region [citation:3]",
+          "Shift+Tab  # unindent marked region [citation:3]"
+        ]
+      }
+    }
+  }
+}

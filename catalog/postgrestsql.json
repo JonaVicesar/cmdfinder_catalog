@@ -1,0 +1,111 @@
+{
+  "postgresql": {
+    "program_description": "PostgreSQL and PostgREST - database and REST API",
+    "actions": {
+      "connect": {
+        "aliases": [
+          "connect",
+          "login",
+          "enter db",
+          "psql",
+          "open postgres",
+          "connect to database"
+        ],
+        "description": "Connects to a PostgreSQL database using psql [citation:1][citation:6]",
+        "commands": [
+          "psql -U <user> -d <database>",
+          "psql -h <host> -p <port> -U <user> -d <database>",
+          "psql \"postgresql://<user>:<password>@<host>:<port>/<db>\"  # connection string"
+        ]
+      },
+      "list-databases": {
+        "aliases": [
+          "show dbs",
+          "list dbs",
+          "\\l",
+          "databases",
+          "see all databases"
+        ],
+        "description": "Lists all databases in the current cluster [citation:1][citation:6]",
+        "commands": ["\\l", "\\l+  # with more details like size"]
+      },
+      "switch-database": {
+        "aliases": ["use db", "switch", "\\c", "connect to db"],
+        "description": "Connects to a different database [citation:1][citation:6]",
+        "commands": ["\\c <database_name>"]
+      },
+      "list-tables": {
+        "aliases": ["show tables", "\\dt", "tables", "see tables"],
+        "description": "Lists all tables visible in the current search path [citation:1]",
+        "commands": [
+          "\\dt",
+          "\\dt schema.*  # list tables from a specific schema",
+          "\\dt+  # with more details"
+        ]
+      },
+      "describe-table": {
+        "aliases": [
+          "describe",
+          "show columns",
+          "\\d",
+          "table structure",
+          "columns"
+        ],
+        "description": "Shows the structure of a specific table [citation:1]",
+        "commands": [
+          "\\d <table_name>",
+          "\\d+ <table_name>  # with more details"
+        ]
+      },
+      "list-users": {
+        "aliases": ["show users", "\\du", "users", "list roles"],
+        "description": "Lists all database roles/users [citation:1]",
+        "commands": ["\\du", "\\du+  # with more details"]
+      },
+      "list-functions": {
+        "aliases": ["show functions", "\\df", "functions", "stored procedures"],
+        "description": "Lists all functions and procedures [citation:1]",
+        "commands": ["\\df", "\\df+  # with source code"]
+      },
+      "view-function-source": {
+        "aliases": [
+          "show function code",
+          "\\sf",
+          "function definition",
+          "see function"
+        ],
+        "description": "Displays the source code of a specific function [citation:1]",
+        "commands": ["\\sf <function_name>"]
+      },
+      "list-extensions": {
+        "aliases": ["\\dx", "extensions", "show extensions"],
+        "description": "Lists all installed extensions [citation:1]",
+        "commands": ["\\dx"]
+      },
+      "toggle-timing": {
+        "aliases": ["timing", "\\timing", "show time", "toggle timing"],
+        "description": "Toggles query execution timing on/off [citation:1]",
+        "commands": ["\\timing"]
+      },
+      "execute-from-file": {
+        "aliases": ["run script", "\\i", "execute file", "run file"],
+        "description": "Executes SQL commands from a file [citation:1][citation:11]",
+        "commands": ["\\i <filename>"]
+      },
+      "shell-command": {
+        "aliases": ["run shell", "\\!", "shell", "execute command"],
+        "description": "Executes a shell command from within psql [citation:1]",
+        "commands": ["\\! <command>"]
+      },
+      "run-postgrest": {
+        "aliases": ["postgrest", "start api", "run api", "postgrest run"],
+        "description": "Starts PostgREST to create a REST API from the database [citation:5]",
+        "commands": [
+          "postgrest <config_file>",
+          "postgrest -e > postgrest.conf  # generate a sample config file",
+          "postgrest --help  # show all options"
+        ]
+      }
+    }
+  }
+}

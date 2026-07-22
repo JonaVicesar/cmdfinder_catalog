@@ -1,0 +1,67 @@
+{
+  "sudo": {
+    "program_description": "sudo - execute commands as superuser",
+    "actions": {
+      "run-as-user": {
+        "aliases": [
+          "run as user",
+          "execute as user",
+          "sudo as user",
+          "user switch",
+          "act as user",
+          "run command as"
+        ],
+        "description": "Runs a command as a specific user (not just root)",
+        "commands": ["sudo -u <user> <command>"]
+      },
+      "edit-sudoers": {
+        "aliases": [
+          "edit sudoers",
+          "visudo",
+          "add sudo permission",
+          "modify sudo rights",
+          "give sudo access",
+          "sudo config"
+        ],
+        "description": "Safely edits the sudo permissions file",
+        "commands": [
+          "sudo visudo  # never edit /etc/sudoers directly with a regular editor"
+        ]
+      },
+      "check-permissions": {
+        "aliases": [
+          "check sudo permissions",
+          "what can I sudo",
+          "list sudo rights",
+          "show privileges",
+          "sudo list"
+        ],
+        "description": "Shows what commands you can run with sudo",
+        "commands": ["sudo -l"]
+      },
+      "repeat-with-sudo": {
+        "aliases": [
+          "run last command with sudo",
+          "forgot sudo",
+          "sudo repeat",
+          "repeat with sudo",
+          "bang bang sudo",
+          "sudo bang bang"
+        ],
+        "description": "Runs the last command with sudo in front of it",
+        "commands": ["sudo !!"]
+      },
+      "keep-sudo-active": {
+        "aliases": [
+          "keep sudo active",
+          "refresh sudo",
+          "extend sudo timeout",
+          "no more password prompts",
+          "sudo refresh"
+        ],
+        "description": "Refreshes the sudo timestamp to avoid re-entering your password",
+        "commands": ["sudo -v"]
+      }
+    }
+  }
+}

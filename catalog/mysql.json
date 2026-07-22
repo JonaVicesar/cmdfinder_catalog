@@ -1,0 +1,82 @@
+{
+  "mysql": {
+    "program_description": "MySQL - command-line tool and client",
+    "actions": {
+      "connect": {
+        "aliases": ["connect", "login", "enter db", "mysql", "open mysql"],
+        "description": "Connects to a MySQL server [citation:2][citation:12]",
+        "commands": [
+          "mysql -u <user> -p",
+          "mysql -h <host> -u <user> -p <database>",
+          "mysql -u <user> -p -e \"SHOW DATABASES;\"  # run a single query"
+        ]
+      },
+      "list-databases": {
+        "aliases": ["show dbs", "list dbs", "databases", "see all databases"],
+        "description": "Lists all databases [citation:7][citation:12]",
+        "commands": ["SHOW DATABASES;"]
+      },
+      "list-tables": {
+        "aliases": ["show tables", "tables", "see tables"],
+        "description": "Lists tables in the current database [citation:7]",
+        "commands": ["SHOW TABLES;"]
+      },
+      "describe-table": {
+        "aliases": ["describe", "show columns", "table structure", "columns"],
+        "description": "Shows the structure of a table [citation:2][citation:7]",
+        "commands": ["DESCRIBE <table_name>;"]
+      },
+      "list-processes": {
+        "aliases": [
+          "processes",
+          "show queries",
+          "active connections",
+          "what's running"
+        ],
+        "description": "Shows all active sessions/queries [citation:2]",
+        "commands": ["SHOW PROCESSLIST;"]
+      },
+      "kill-query": {
+        "aliases": ["kill", "stop query", "cancel query", "kill process"],
+        "description": "Terminates a running query or connection [citation:2]",
+        "commands": [
+          "KILL QUERY <id>;  # cancels a running query",
+          "KILL <id>;  # terminates the entire connection"
+        ]
+      },
+      "show-replica-status": {
+        "aliases": [
+          "replica status",
+          "slave status",
+          "check replication",
+          "show replica"
+        ],
+        "description": "Shows the replication status of a replica [citation:2]",
+        "commands": [
+          "SHOW REPLICA STATUS\\G",
+          "SHOW SLAVE STATUS\\G  # legacy command"
+        ]
+      },
+      "check-db-size": {
+        "aliases": ["size", "database size", "how big", "usage"],
+        "description": "Shows the size of each database [citation:2]",
+        "commands": [
+          "SELECT table_schema, ROUND(SUM(data_length + index_length)/1024/1024, 1) AS mb FROM information_schema.tables GROUP BY table_schema ORDER BY mb DESC;"
+        ]
+      },
+      "backup": {
+        "aliases": ["dump", "export", "backup db", "mysqldump"],
+        "description": "Creates a logical backup of a database [citation:2][citation:12]",
+        "commands": [
+          "mysqldump --single-transaction <database> > <backup>.sql",
+          "mysqldump --all-databases > all.sql  # backup everything"
+        ]
+      },
+      "restore": {
+        "aliases": ["import", "restore db", "load db", "mysql restore"],
+        "description": "Restores a database from a backup file [citation:2]",
+        "commands": ["mysql <database> < <backup>.sql"]
+      }
+    }
+  }
+}

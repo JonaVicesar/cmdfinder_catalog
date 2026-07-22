@@ -1,0 +1,234 @@
+{
+  "python": {
+    "program_description": "Python & pip - programming language and package manager",
+    "actions": {
+      "pip-install": {
+        "aliases": [
+          "install",
+          "pip install",
+          "get package",
+          "install package",
+          "pip get",
+          "add package",
+          "need this",
+          "gimme",
+          "python install"
+        ],
+        "description": "Installs a Python package from PyPI",
+        "commands": [
+          "pip install <package>",
+          "pip3 install <package>  # Python 3",
+          "python -m pip install <package>",
+          "pip install <package>==1.2.3  # specific version",
+          "pip install <package>>=1.0.0  # minimum version",
+          "pip install --upgrade <package>",
+          "pip install --user <package>  # user install",
+          "pip install -r requirements.txt  # from file"
+        ]
+      },
+      "pip-uninstall": {
+        "aliases": [
+          "uninstall",
+          "remove",
+          "delete",
+          "pip uninstall",
+          "get rid of",
+          "kill package",
+          "pip remove",
+          "bye package"
+        ],
+        "description": "Uninstalls a Python package",
+        "commands": [
+          "pip uninstall <package>",
+          "pip3 uninstall <package>",
+          "pip uninstall -y <package>  # auto confirm"
+        ]
+      },
+      "pip-list": {
+        "aliases": [
+          "list",
+          "show packages",
+          "installed packages",
+          "what's installed",
+          "pip list",
+          "deps list"
+        ],
+        "description": "Lists all installed packages",
+        "commands": [
+          "pip list",
+          "pip3 list",
+          "pip list --outdated  # show outdated",
+          "pip list -o  # outdated only"
+        ]
+      },
+      "pip-freeze": {
+        "aliases": [
+          "freeze",
+          "requirements",
+          "export deps",
+          "save deps",
+          "pip freeze",
+          "generate requirements"
+        ],
+        "description": "Exports installed packages to requirements format",
+        "commands": [
+          "pip freeze > requirements.txt",
+          "pip3 freeze > requirements.txt",
+          "pip freeze --all  # include pip itself"
+        ]
+      },
+      "pip-show": {
+        "aliases": [
+          "show",
+          "package info",
+          "details",
+          "what is this",
+          "pip show",
+          "info package"
+        ],
+        "description": "Shows detailed information about a package",
+        "commands": [
+          "pip show <package>",
+          "pip3 show <package>",
+          "pip show -f <package>  # show files"
+        ]
+      },
+      "pip-search": {
+        "aliases": [
+          "search",
+          "find package",
+          "look for",
+          "pip search",
+          "find python package"
+        ],
+        "description": "Searches PyPI for packages (deprecated in newer versions)",
+        "commands": ["pip search <query>", "pip3 search <query>"]
+      },
+      "pip-check": {
+        "aliases": [
+          "check",
+          "verify",
+          "check deps",
+          "dependency check",
+          "conflicts"
+        ],
+        "description": "Checks installed packages for dependency conflicts",
+        "commands": ["pip check", "pip3 check"]
+      },
+      "pip-download": {
+        "aliases": [
+          "download",
+          "get wheel",
+          "download package",
+          "pip download"
+        ],
+        "description": "Downloads packages without installing",
+        "commands": [
+          "pip download <package>",
+          "pip download -r requirements.txt"
+        ]
+      },
+      "pip-cache": {
+        "aliases": [
+          "cache",
+          "clear cache",
+          "clean cache",
+          "pip cache",
+          "purge cache"
+        ],
+        "description": "Manages pip's cache",
+        "commands": ["pip cache info", "pip cache purge", "pip cache list"]
+      },
+      "pip-config": {
+        "aliases": ["config", "pip config", "settings", "configure pip"],
+        "description": "Manages pip configuration",
+        "commands": [
+          "pip config list",
+          "pip config set <key> <value>",
+          "pip config get <key>",
+          "pip config unset <key>"
+        ]
+      },
+      "python-run": {
+        "aliases": [
+          "run",
+          "python",
+          "execute",
+          "start python",
+          "run script",
+          "python3",
+          "py"
+        ],
+        "description": "Runs a Python script or opens REPL",
+        "commands": [
+          "python <file>.py",
+          "python3 <file>.py",
+          "python -c \"print('hello')\"  # run code",
+          "python -m <module>  # run module",
+          "python  # open REPL"
+        ]
+      },
+      "python-version": {
+        "aliases": [
+          "version",
+          "python version",
+          "check python",
+          "what version"
+        ],
+        "description": "Shows the installed Python version",
+        "commands": [
+          "python --version",
+          "python3 --version",
+          "python -V",
+          "python3 -V"
+        ]
+      },
+      "venv-create": {
+        "aliases": [
+          "venv",
+          "virtualenv",
+          "create venv",
+          "new env",
+          "python env",
+          "isolated env",
+          "new virtualenv"
+        ],
+        "description": "Creates a Python virtual environment",
+        "commands": [
+          "python -m venv venv",
+          "python3 -m venv venv",
+          "virtualenv venv"
+        ]
+      },
+      "venv-activate": {
+        "aliases": ["activate", "activate venv", "source venv", "enter venv"],
+        "description": "Activates a virtual environment",
+        "commands": [
+          "source venv/bin/activate  # Linux/Mac",
+          ". venv/bin/activate  # Linux/Mac alternative",
+          "venv\\Scripts\\activate  # Windows",
+          "source venv/bin/activate && pip install -r requirements.txt"
+        ]
+      },
+      "venv-deactivate": {
+        "aliases": ["deactivate", "exit venv", "leave venv"],
+        "description": "Deactivates the current virtual environment",
+        "commands": ["deactivate"]
+      },
+      "pip-upgrade": {
+        "aliases": [
+          "upgrade",
+          "up",
+          "update pip",
+          "self-upgrade",
+          "pip upgrade"
+        ],
+        "description": "Upgrades pip itself to the latest version",
+        "commands": [
+          "pip install --upgrade pip",
+          "python -m pip install --upgrade pip"
+        ]
+      }
+    }
+  }
+}

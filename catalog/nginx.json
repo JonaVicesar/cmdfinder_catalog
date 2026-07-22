@@ -1,0 +1,95 @@
+{
+  "nginx": {
+    "program_description": "Nginx - web server and reverse proxy",
+    "actions": {
+      "test-config": {
+        "aliases": [
+          "test",
+          "test config",
+          "check config",
+          "validate",
+          "verify config",
+          "is it valid",
+          "check syntax"
+        ],
+        "description": "Tests the nginx configuration for syntax errors",
+        "commands": [
+          "sudo nginx -t",
+          "sudo nginx -t -c /path/to/nginx.conf  # specific config file",
+          "sudo nginx -T  # test and print config"
+        ]
+      },
+      "reload": {
+        "aliases": [
+          "reload",
+          "reload config",
+          "refresh",
+          "apply config",
+          "graceful reload",
+          "no downtime",
+          "restart graceful"
+        ],
+        "description": "Reloads nginx configuration without interrupting connections",
+        "commands": [
+          "sudo nginx -s reload",
+          "sudo systemctl reload nginx",
+          "sudo service nginx reload"
+        ]
+      },
+      "stop": {
+        "aliases": ["stop", "stop nginx", "shutdown", "kill nginx", "halt"],
+        "description": "Stops nginx immediately",
+        "commands": [
+          "sudo nginx -s stop",
+          "sudo systemctl stop nginx",
+          "sudo service nginx stop"
+        ]
+      },
+      "quit": {
+        "aliases": [
+          "quit",
+          "graceful stop",
+          "graceful quit",
+          "finish connections"
+        ],
+        "description": "Gracefully stops nginx after serving current requests",
+        "commands": ["sudo nginx -s quit", "sudo kill -QUIT <nginx-pid>"]
+      },
+      "start": {
+        "aliases": ["start", "start nginx", "launch nginx", "spin up nginx"],
+        "description": "Starts the nginx server",
+        "commands": [
+          "sudo nginx",
+          "sudo systemctl start nginx",
+          "sudo service nginx start"
+        ]
+      },
+      "status": {
+        "aliases": ["status", "nginx status", "is it running", "check nginx"],
+        "description": "Shows the status of nginx service",
+        "commands": ["sudo systemctl status nginx", "sudo service nginx status"]
+      },
+      "logs": {
+        "aliases": [
+          "logs",
+          "nginx logs",
+          "access logs",
+          "error logs",
+          "show logs"
+        ],
+        "description": "Shows nginx logs",
+        "commands": [
+          "sudo tail -f /var/log/nginx/access.log",
+          "sudo tail -f /var/log/nginx/error.log",
+          "sudo tail -f /var/log/nginx/access.log /var/log/nginx/error.log",
+          "sudo journalctl -u nginx -f  # systemd logs"
+        ]
+      },
+      "reopen": {
+        "aliases": ["reopen logs", "rotate logs", "reopen", "log rotation"],
+        "description": "Reopens log files (for log rotation)",
+        "commands": ["sudo nginx -s reopen", "sudo kill -USR1 <nginx-pid>"]
+      }
+    }
+  }
+}

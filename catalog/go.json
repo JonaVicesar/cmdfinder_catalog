@@ -1,0 +1,226 @@
+{
+  "go": {
+    "program_description": "Go - the Go programming language",
+    "actions": {
+      "run": {
+        "aliases": [
+          "run",
+          "go run",
+          "execute",
+          "run program",
+          "start",
+          "go run file",
+          "test it",
+          "run go code",
+          "start program"
+        ],
+        "description": "Compiles and runs a Go program directly",
+        "commands": [
+          "go run main.go  # run the program",
+          "go run <file>.go  # run specific file",
+          "go run .  # run all go files in current directory",
+          "go run -race main.go  # run with race detection"
+        ]
+      },
+      "build": {
+        "aliases": [
+          "build",
+          "compile",
+          "make binary",
+          "build executable",
+          "go build",
+          "build program",
+          "make program",
+          "create executable"
+        ],
+        "description": "Compiles Go source code into an executable binary",
+        "commands": [
+          "go build  # build current directory",
+          "go build -o myapp  # build with custom name ",
+          "go build -ldflags '-s -w' -o myapp  # reduce binary size ",
+          "go build -race  # build with race detection",
+          "go build -v  # verbose build"
+        ]
+      },
+      "install": {
+        "aliases": [
+          "install",
+          "go install",
+          "install package",
+          "add package",
+          "get package",
+          "install go package"
+        ],
+        "description": "Compiles and installs packages and dependencies",
+        "commands": [
+          "go install <package>  # install package to GOPATH/bin",
+          "go install .  # install current project",
+          "go install -v  # verbose install",
+          "go install -race  # install with race detection"
+        ]
+      },
+      "test": {
+        "aliases": [
+          "test",
+          "go test",
+          "run tests",
+          "test all",
+          "unit tests",
+          "test package",
+          "check tests"
+        ],
+        "description": "Runs tests in the current package",
+        "commands": [
+          "go test  # run all tests",
+          "go test -v  # verbose test output",
+          "go test -run <pattern>  # run specific tests",
+          "go test -cover  # with coverage report",
+          "go test -coverprofile=coverage.out  # save coverage data",
+          "go test -bench=.  # run benchmarks",
+          "go test -bench=. -cpu=1,2,4  # run benchmarks with CPU profiles"
+        ]
+      },
+      "fmt": {
+        "aliases": [
+          "format",
+          "go fmt",
+          "format code",
+          "pretty code",
+          "auto format",
+          "clean code",
+          "format all"
+        ],
+        "description": "Formats Go source code according to standard rules",
+        "commands": [
+          "go fmt  # format current directory",
+          "go fmt ./...  # format all subdirectories",
+          "gofmt -s -w .  # simplify and format",
+          "go fmt -x  # show commands being executed"
+        ]
+      },
+      "vet": {
+        "aliases": [
+          "vet",
+          "go vet",
+          "check code",
+          "lint",
+          "find issues",
+          "static analysis",
+          "code quality"
+        ],
+        "description": "Reports suspicious constructs in code",
+        "commands": [
+          "go vet  # vet current package",
+          "go vet ./...  # vet all packages",
+          "go vet -v  # verbose output"
+        ]
+      },
+      "get": {
+        "aliases": [
+          "get",
+          "go get",
+          "download package",
+          "fetch package",
+          "add dependency",
+          "install dependency"
+        ],
+        "description": "Downloads and installs packages and dependencies",
+        "commands": [
+          "go get <package>  # get and install package",
+          "go get -u <package>  # update package",
+          "go get -d <package>  # download only, no install",
+          "go get -t -d -v  # get test dependencies"
+        ]
+      },
+      "mod": {
+        "aliases": [
+          "module",
+          "go mod",
+          "init module",
+          "create module",
+          "manage dependencies",
+          "go modules",
+          "mod init"
+        ],
+        "description": "Manages Go modules and dependencies",
+        "commands": [
+          "go mod init <module>  # initialize module ",
+          "go mod tidy  # add missing and remove unused modules ",
+          "go mod vendor  # vendor dependencies",
+          "go mod download  # download modules",
+          "go mod verify  # verify dependencies",
+          "go mod graph  # print module graph"
+        ]
+      },
+      "clean": {
+        "aliases": [
+          "clean",
+          "go clean",
+          "clean build",
+          "remove binaries",
+          "clean cache",
+          "nuke build",
+          "clear build"
+        ],
+        "description": "Removes object files and cached build files",
+        "commands": [
+          "go clean  # clean current project",
+          "go clean -cache  # clean build cache",
+          "go clean -modcache  # clean module cache",
+          "go clean -testcache  # clean test cache",
+          "go clean -i  # clean installed packages"
+        ]
+      },
+      "generate": {
+        "aliases": [
+          "generate",
+          "go generate",
+          "codegen",
+          "generate code",
+          "run generators",
+          "auto generate"
+        ],
+        "description": "Runs go generate directives in source files",
+        "commands": [
+          "go generate  # generate in current directory",
+          "go generate ./...  # generate in all packages",
+          "go generate -run <pattern>  # run specific generators"
+        ]
+      },
+      "env": {
+        "aliases": [
+          "env",
+          "go env",
+          "environment",
+          "go settings",
+          "show env",
+          "gopath",
+          "goroot"
+        ],
+        "description": "Shows Go environment information",
+        "commands": [
+          "go env  # show all env variables",
+          "go env GOPATH  # show specific env variable",
+          "go env -w <key>=<value>  # set env variable",
+          "go env -u <key>  # unset env variable"
+        ]
+      },
+      "list": {
+        "aliases": [
+          "list",
+          "go list",
+          "list packages",
+          "show packages",
+          "list dependencies"
+        ],
+        "description": "Lists packages and their dependencies",
+        "commands": [
+          "go list ./...  # list all packages",
+          "go list -f '{{.Imports}}'  # list imports",
+          "go list -m all  # list modules",
+          "go list -u -m all  # list modules with updates"
+        ]
+      }
+    }
+  }
+}

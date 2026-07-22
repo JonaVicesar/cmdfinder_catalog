@@ -1,0 +1,141 @@
+{
+  "curl": {
+    "program_description": "curl - command-line data transfer tool",
+    "actions": {
+      "get": {
+        "aliases": ["get", "fetch", "download", "curl get", "make request"],
+        "description": "Performs a GET request to a URL",
+        "commands": [
+          "curl <url>",
+          "curl -L <url>  # follow redirects",
+          "curl -v <url>  # verbose output",
+          "curl -I <url>  # fetch only headers"
+        ]
+      },
+      "post-json": {
+        "aliases": [
+          "post",
+          "post json",
+          "send json",
+          "post data",
+          "create resource"
+        ],
+        "description": "Sends a POST request with JSON data",
+        "commands": [
+          "curl -X POST -H \"Content-Type: application/json\" -d '{\"key\":\"value\"}' <url>",
+          "curl -X POST -H \"Content-Type: application/json\" -d @file.json <url>  # from file",
+          "curl -X POST -H \"Content-Type: application/json\" -d '{\"name\":\"test\"}' <url> -v"
+        ]
+      },
+      "put-json": {
+        "aliases": ["put", "put json", "update", "update resource", "replace"],
+        "description": "Sends a PUT request with JSON data",
+        "commands": [
+          "curl -X PUT -H \"Content-Type: application/json\" -d '{\"key\":\"value\"}' <url>",
+          "curl -X PUT -H \"Content-Type: application/json\" -d @file.json <url>"
+        ]
+      },
+      "patch-json": {
+        "aliases": ["patch", "partial update", "patch json", "modify"],
+        "description": "Sends a PATCH request with JSON data",
+        "commands": [
+          "curl -X PATCH -H \"Content-Type: application/json\" -d '{\"key\":\"value\"}' <url>"
+        ]
+      },
+      "delete": {
+        "aliases": ["delete", "remove", "del", "delete resource"],
+        "description": "Sends a DELETE request",
+        "commands": [
+          "curl -X DELETE <url>",
+          "curl -X DELETE -H \"Content-Type: application/json\" <url>"
+        ]
+      },
+      "headers": {
+        "aliases": [
+          "headers",
+          "headers only",
+          "show headers",
+          "response headers",
+          "-I"
+        ],
+        "description": "Shows only the response headers",
+        "commands": [
+          "curl -I <url>",
+          "curl -I -X HEAD <url>",
+          "curl -v <url> 2>&1 > /dev/null  # verbose with headers"
+        ]
+      },
+      "custom-headers": {
+        "aliases": [
+          "add headers",
+          "custom headers",
+          "-H",
+          "set headers",
+          "authorization"
+        ],
+        "description": "Sends a request with custom headers",
+        "commands": [
+          "curl -H \"Authorization: Bearer <token>\" <url>",
+          "curl -H \"Accept: application/json\" <url>",
+          "curl -H \"X-Custom-Header: value\" <url>",
+          "curl -H \"Authorization: Bearer <token>\" -H \"Content-Type: application/json\" <url>"
+        ]
+      },
+      "ignore-ssl": {
+        "aliases": [
+          "ignore ssl",
+          "skip ssl",
+          "insecure",
+          "-k",
+          "no verify",
+          "self-signed"
+        ],
+        "description": "Ignores SSL certificate verification (for self-signed/insecure)",
+        "commands": [
+          "curl -k <url>",
+          "curl -k -X POST -H \"Content-Type: application/json\" -d '{\"key\":\"value\"}' <url>",
+          "curl --insecure <url>"
+        ]
+      },
+      "auth-basic": {
+        "aliases": ["auth", "basic auth", "username password", "-u"],
+        "description": "Sends a request with basic authentication",
+        "commands": [
+          "curl -u <username>:<password> <url>",
+          "curl -u <username> <url>  # prompts for password"
+        ]
+      },
+      "save-output": {
+        "aliases": ["save", "download file", "save file", "output file", "-o"],
+        "description": "Saves the response to a file",
+        "commands": [
+          "curl -o <filename> <url>",
+          "curl -O <url>  # save with remote filename",
+          "curl -O -L <url>  # follow redirects and save"
+        ]
+      },
+      "verbose-debug": {
+        "aliases": ["verbose", "debug", "show everything", "-v", "detailed"],
+        "description": "Shows verbose output with request/response details",
+        "commands": [
+          "curl -v <url>",
+          "curl -v -X POST -H \"Content-Type: application/json\" -d '{\"key\":\"value\"}' <url>"
+        ]
+      },
+      "timeout": {
+        "aliases": [
+          "timeout",
+          "max time",
+          "--max-time",
+          "limit time",
+          "stop after"
+        ],
+        "description": "Sets a maximum time for the request (in seconds)",
+        "commands": [
+          "curl --max-time 10 <url>",
+          "curl --connect-timeout 5 --max-time 10 <url>"
+        ]
+      }
+    }
+  }
+}

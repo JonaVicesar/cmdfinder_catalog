@@ -1,0 +1,233 @@
+{
+  "adb": {
+    "program_description": "ADB - Android Debug Bridge",
+    "actions": {
+      "devices": {
+        "aliases": [
+          "devices",
+          "list devices",
+          "connected devices",
+          "show devices",
+          "adb devices",
+          "what's connected",
+          "phone connected"
+        ],
+        "description": "Lists connected Android devices and emulators",
+        "commands": [
+          "adb devices  # list all devices ",
+          "adb devices -l  # show device details",
+          "adb get-state  # show device state",
+          "adb wait-for-device  # wait for device to connect"
+        ]
+      },
+      "install": {
+        "aliases": [
+          "install",
+          "install apk",
+          "app install",
+          "install app",
+          "adb install",
+          "install android app",
+          "install apk on phone"
+        ],
+        "description": "Installs an APK on the connected device",
+        "commands": [
+          "adb install <apk-file>  # install APK ",
+          "adb install -r <apk-file>  # reinstall (replace existing)",
+          "adb install -d <apk-file>  # install with downgrade allowed",
+          "adb install -g <apk-file>  # grant all permissions",
+          "adb install -s <apk-file>  # install on sdcard",
+          "adb install-multiple <apk1> <apk2>  # install multiple APKs"
+        ]
+      },
+      "uninstall": {
+        "aliases": [
+          "uninstall",
+          "remove app",
+          "delete app",
+          "adb uninstall",
+          "remove apk",
+          "uninstall app"
+        ],
+        "description": "Uninstalls an app from the connected device",
+        "commands": [
+          "adb uninstall <package>  # uninstall app ",
+          "adb uninstall -k <package>  # uninstall but keep data",
+          "adb shell pm uninstall <package>  # alternative"
+        ]
+      },
+      "push": {
+        "aliases": [
+          "push",
+          "copy to phone",
+          "upload to device",
+          "adb push",
+          "copy file",
+          "send file to phone"
+        ],
+        "description": "Copies files from computer to the device",
+        "commands": [
+          "adb push <local-file> <remote-path>  # copy file to device ",
+          "adb push <local-folder> <remote-path>  # copy folder recursively",
+          "adb push -p <file> <remote>  # show progress"
+        ]
+      },
+      "pull": {
+        "aliases": [
+          "pull",
+          "copy from phone",
+          "download from device",
+          "adb pull",
+          "get file",
+          "retrieve file"
+        ],
+        "description": "Copies files from the device to the computer",
+        "commands": [
+          "adb pull <remote-file> <local-path>  # copy from device ",
+          "adb pull <remote-folder> <local-path>  # copy folder",
+          "adb pull -a <remote> <local>  # preserve timestamps"
+        ]
+      },
+      "shell": {
+        "aliases": [
+          "shell",
+          "open shell",
+          "terminal on phone",
+          "adb shell",
+          "phone terminal",
+          "android shell"
+        ],
+        "description": "Opens a shell on the connected device",
+        "commands": [
+          "adb shell  # open interactive shell ",
+          "adb shell <command>  # run single command",
+          "adb shell pm list packages  # list installed packages ",
+          "adb shell dumpsys battery  # get battery info",
+          "adb shell dumpsys meminfo  # get memory info",
+          "adb shell dumpsys package <package>  # get app info"
+        ]
+      },
+      "logcat": {
+        "aliases": [
+          "logcat",
+          "logs",
+          "view logs",
+          "phone logs",
+          "android logs",
+          "show logs",
+          "debug logs"
+        ],
+        "description": "Shows device logs",
+        "commands": [
+          "adb logcat  # show all logs ",
+          "adb logcat -c  # clear logs",
+          "adb logcat -v time  # show with timestamps",
+          "adb logcat -s <tag>  # filter by tag",
+          "adb logcat <filter>  # apply filter",
+          "adb logcat | grep <pattern>  # filter output"
+        ]
+      },
+      "screenshot": {
+        "aliases": [
+          "screenshot",
+          "screen capture",
+          "take screenshot",
+          "print screen",
+          "capture screen"
+        ],
+        "description": "Takes a screenshot of the device screen",
+        "commands": [
+          "adb shell screencap /sdcard/screenshot.png  # capture on device",
+          "adb pull /sdcard/screenshot.png  # get screenshot",
+          "adb exec-out screencap -p > screenshot.png  # direct capture"
+        ]
+      },
+      "screenrecord": {
+        "aliases": [
+          "screenrecord",
+          "record screen",
+          "video screen",
+          "capture video",
+          "record video"
+        ],
+        "description": "Records the device screen",
+        "commands": [
+          "adb shell screenrecord /sdcard/video.mp4  # record video ",
+          "adb shell screenrecord --time-limit 30 /sdcard/video.mp4  # 30 sec limit",
+          "adb shell screenrecord --size 720x1280 /sdcard/video.mp4  # specify size ",
+          "adb pull /sdcard/video.mp4  # get video"
+        ]
+      },
+      "reboot": {
+        "aliases": [
+          "reboot",
+          "restart phone",
+          "reboot device",
+          "reboot android",
+          "reset phone"
+        ],
+        "description": "Reboots the connected device",
+        "commands": [
+          "adb reboot  # normal reboot ",
+          "adb reboot bootloader  # reboot to bootloader",
+          "adb reboot recovery  # reboot to recovery mode"
+        ]
+      },
+      "connect": {
+        "aliases": [
+          "connect",
+          "connect wifi",
+          "adb connect",
+          "wireless adb",
+          "tcp ip"
+        ],
+        "description": "Connects to a device via TCP/IP (wireless)",
+        "commands": [
+          "adb connect <ip-address>  # connect to wireless device ",
+          "adb connect <ip>:5555  # connect with port",
+          "adb tcpip 5555  # restart in TCP mode",
+          "adb disconnect <ip>  # disconnect"
+        ]
+      },
+      "backup": {
+        "aliases": [
+          "backup",
+          "android backup",
+          "backup phone",
+          "adb backup",
+          "backup data"
+        ],
+        "description": "Creates a backup of device data",
+        "commands": [
+          "adb backup -apk -shared -all -f backup.ab  # full backup ",
+          "adb backup -f backup.ab <package>  # backup specific app"
+        ]
+      },
+      "restore": {
+        "aliases": [
+          "restore",
+          "restore backup",
+          "android restore",
+          "adb restore"
+        ],
+        "description": "Restores data from a backup file",
+        "commands": ["adb restore backup.ab  # restore from backup"]
+      },
+      "kill-server": {
+        "aliases": [
+          "kill adb",
+          "restart adb",
+          "adb kill",
+          "reset adb",
+          "fix adb"
+        ],
+        "description": "Kills the ADB server (useful for troubleshooting)",
+        "commands": [
+          "adb kill-server  # kill ADB server",
+          "adb start-server  # start ADB server",
+          "adb devices  # auto starts server"
+        ]
+      }
+    }
+  }
+}

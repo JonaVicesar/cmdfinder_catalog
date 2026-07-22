@@ -1,0 +1,361 @@
+{
+  "ffmpeg": {
+    "program_description": "ffmpeg - multimedia framework for video/audio conversion and processing",
+    "actions": {
+      "convert": {
+        "aliases": [
+          "convert",
+          "transcode",
+          "change format",
+          "convert video",
+          "convert audio",
+          "ffmpeg convert",
+          "transform",
+          "re-encode"
+        ],
+        "description": "Converts media from one format to another",
+        "commands": [
+          "ffmpeg -i input.mov -c:v libx264 -preset medium -crf 23 -c:a aac -b:a 192k output.mp4  # standard MP4 conversion [citation:1]",
+          "ffmpeg -i input.mov -c:v libx264 -crf 18 -preset slow -c:a copy output.mp4  # high quality [citation:2]",
+          "ffmpeg -i input.avi -c:v libx264 -crf 23 -c:a aac -b:a 128k output.mp4  # AVI to MP4 [citation:2]",
+          "ffmpeg -i input.mkv -c copy output.mp4  # remux without re-encoding [citation:2]",
+          "ffmpeg -i input.mov -c:v prores_ks -profile:v 3 -pix_fmt yuv422p10 -c:a pcm_s24le output.mov  # ProRes HQ for editing [citation:1]",
+          "ffmpeg -i input.mp4 -c:v libx265 -crf 28 -preset medium -c:a libopus output.mkv  # H.265/HEVC [citation:4]",
+          "ffmpeg -i input.mp4 -c:v libvpx-vp9 -crf 30 -b:v 0 -c:a libopus output.webm  # VP9 for web [citation:6]"
+        ]
+      },
+      "convert-to-mp3": {
+        "aliases": [
+          "to mp3",
+          "extract mp3",
+          "audio mp3",
+          "video to mp3",
+          "convert to mp3",
+          "mp3 extract",
+          "music mp3"
+        ],
+        "description": "Extracts audio from video and saves as MP3",
+        "commands": [
+          "ffmpeg -i input.mp4 -vn -acodec libmp3lame -ab 192k audio.mp3  # high quality MP3 [citation:6]",
+          "ffmpeg -i input.flv -vn -ab 320k output.mp3  # highest quality [citation:7]",
+          "ffmpeg -i input.m4a -acodec libmp3lame -vn -b:a 320k output.mp3  # convert M4A to MP3 [citation:6]",
+          "ffmpeg -i input.mp4 -vn -codec:a libmp3lame -q:a 2 audio.mp3  # variable bitrate (0-9, lower is better) [citation:2]"
+        ]
+      },
+      "extract-audio": {
+        "aliases": [
+          "extract audio",
+          "audio only",
+          "get audio",
+          "rip audio",
+          "remove video",
+          "audio extraction"
+        ],
+        "description": "Extracts audio from video without conversion",
+        "commands": [
+          "ffmpeg -i input.mp4 -vn -acodec copy audio.aac  # extract original audio [citation:7]",
+          "ffmpeg -i input.mkv -vn -c:a copy audio.mka  # extract from MKV",
+          "ffmpeg -i input.mp4 -vn -c:a pcm_s16le audio.wav  # extract as WAV",
+          "ffmpeg -i input.mp4 -vn -acodec aac -ab 128k audio.m4a  # extract as AAC"
+        ]
+      },
+      "trim": {
+        "aliases": [
+          "trim",
+          "cut video",
+          "slice video",
+          "remove start",
+          "remove end",
+          "clip",
+          "cut",
+          "shorten video",
+          "take part"
+        ],
+        "description": "Trims video to a specific time range",
+        "commands": [
+          "ffmpeg -i input.mp4 -ss 00:01:30 -to 00:02:30 -c copy output.mp4  # fast trim (keyframe accurate) [citation:2]",
+          "ffmpeg -ss 00:00:10 -i input.mp4 -t 15 -c copy output.mp4  # 15 seconds from 10 sec mark [citation:4]",
+          "ffmpeg -i input.mp4 -ss 00:00:05 -to 00:00:12 -c:v libx264 -crf 20 -c:a aac output.mp4  # frame-accurate (slower) [citation:2]",
+          "ffmpeg -i input.mp4 -ss 30 -c copy output.mp4  # remove first 30 seconds [citation:7]",
+          "ffmpeg -i input.mp4 -to 100 -c copy output.mp4  # keep first 100 seconds [citation:7]"
+        ]
+      },
+      "resize": {
+        "aliases": [
+          "resize",
+          "scale video",
+          "change size",
+          "resize video",
+          "make smaller",
+          "make bigger",
+          "change resolution"
+        ],
+        "description": "Changes video resolution",
+        "commands": [
+          "ffmpeg -i input.mp4 -vf scale=1280:720 output.mp4  # specific dimensions [citation:2]",
+          "ffmpeg -i input.mp4 -vf \"scale=1280:-2\" output.mp4  # preserve aspect ratio [citation:2]",
+          "ffmpeg -i input.mp4 -vf \"scale=1080:-1,pad=1080:1080:(ow-iw)/2:(oh-ih)/2\" output.mp4  # square for Instagram [citation:1]",
+          "ffmpeg -i input.mp4 -vf \"scale=w=1080:h=1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2\" output.mp4  # vertical with padding [citation:9]",
+          "ffmpeg -i input.avi -vf scale=320:240 output.avi  # simple resize [citation:7]"
+        ]
+      },
+      "change-speed": {
+        "aliases": [
+          "speed up",
+          "slow down",
+          "fast motion",
+          "slow motion",
+          "change speed",
+          "tempo",
+          "fast forward",
+          "slow mo"
+        ],
+        "description": "Changes playback speed of video/audio",
+        "commands": [
+          "ffmpeg -i input.mp4 -filter:v \"setpts=0.5*PTS\" -filter:a \"atempo=2\" output.mp4  # 2x speed [citation:1]",
+          "ffmpeg -i input.mp4 -filter:a \"atempo=0.5\" -vn output.aac  # half speed audio [citation:7]",
+          "ffmpeg -i input.mp4 -filter:v \"setpts=2*PTS\" -filter:a \"atempo=0.5\" output.mp4  # half speed",
+          "ffmpeg -i input.mp4 -filter:a \"atempo=1.5\" -vn output.mp3  # 1.5x speed audio"
+        ]
+      },
+      "merge": {
+        "aliases": [
+          "merge videos",
+          "concatenate",
+          "join videos",
+          "combine videos",
+          "concat",
+          "stitch",
+          "merge files",
+          "append"
+        ],
+        "description": "Merges multiple video files into one",
+        "commands": [
+          "printf \"file '1.mp4'\\nfile '2.mp4'\\n\" > list.txt && ffmpeg -f concat -safe 0 -i list.txt -c copy output.mp4  # lossless merge [citation:1]",
+          "ffmpeg -i \"concat:file1.mp3|file2.mp3\" -acodec copy output.mp3  # merge MP3s [citation:7]",
+          "ffmpeg -i opening.mp4 -i content.mp4 -i ending.mp4 -filter_complex \"[0:v][0:a][1:v][1:a][2:v][2:a]concat=n=3:v=1:a=1\" output.mp4  # complex merge [citation:7]",
+          "ffmpeg -f concat -i mylist.txt -c copy output.mp4  # with file list [citation:6]"
+        ]
+      },
+      "add-audio": {
+        "aliases": [
+          "add audio",
+          "replace audio",
+          "swap audio",
+          "new audio",
+          "change audio",
+          "mux audio",
+          "mix audio"
+        ],
+        "description": "Adds or replaces audio track in video",
+        "commands": [
+          "ffmpeg -i video.mp4 -i audio.mp3 -map 0:v -map 1:a -c:v copy -c:a aac -shortest output.mp4  # replace audio [citation:9]",
+          "ffmpeg -i video.mp4 -i audio.wav -map 0:v -map 1:a -c:v copy -c:a aac output.mp4  # add audio",
+          "ffmpeg -i draft.mp4 -i studio_mix.wav -map 0:v -map 1:a -c:v copy -c:a aac final.mp4  # swap with studio audio [citation:1]",
+          "ffmpeg -i video.avi -i audio.mp3 -map 0.0:1 -map 1:0 -vcodec copy -acodec copy output.avi  # mux with mapping [citation:7]"
+        ]
+      },
+      "extract-frames": {
+        "aliases": [
+          "extract frames",
+          "screenshots",
+          "extract images",
+          "every second",
+          "single frame",
+          "thumbnail",
+          "frame grab"
+        ],
+        "description": "Extracts frames/images from video",
+        "commands": [
+          "ffmpeg -i input.mp4 -vf fps=1 frame_%04d.png  # 1 frame per second [citation:2]",
+          "ffmpeg -i input.mp4 -ss 00:00:05 -vframes 1 -s 128x128 image.png  # single frame at timestamp [citation:6]",
+          "ffmpeg -i input.mpg image%d.jpg  # all frames [citation:7]",
+          "ffmpeg -i input.mp4 -r 1 image%d.jpg  # 1 image per second [citation:7]",
+          "ffmpeg -i video.mp4 -vf \"select='eq(pict_type,I)'\" -fps_mode vfr -frame_pts 1 keyframe_%06d.jpg  # extract keyframes [citation:11]",
+          "ffmpeg -i input.mov -vframes 1 -s 320x240 -ss 10 thumb.jpg  # thumbnail at 10 seconds [citation:7]"
+        ]
+      },
+      "gif": {
+        "aliases": [
+          "make gif",
+          "to gif",
+          "create gif",
+          "animated gif",
+          "gif video",
+          "gif"
+        ],
+        "description": "Creates GIF from video",
+        "commands": [
+          "ffmpeg -i scene.mp4 -ss 00:00:02 -t 3 -vf \"fps=12,scale=480:-1:flags=lanczos\" -c:v gif -loop 0 output.gif  # optimized GIF [citation:1]",
+          "ffmpeg -i video.mp4 -vf 'scale=-1:1000' -r 15 output.gif  # scale and framerate [citation:6]",
+          "ffmpeg -i input.mp4 -vf \"fps=10,scale=320:-1:flags=lanczos\" -c:v gif -loop 0 output.gif  # small GIF"
+        ]
+      },
+      "prores": {
+        "aliases": [
+          "prores",
+          "editing format",
+          "prores export",
+          "prores hq",
+          "final cut",
+          "premiere pro"
+        ],
+        "description": "Converts to ProRes for professional editing",
+        "commands": [
+          "ffmpeg -i input.mp4 -c:v prores_ks -profile:v 3 -pix_fmt yuv422p10 -c:a pcm_s24le output.mov  # ProRes HQ [citation:1]",
+          "ffmpeg -i input.mp4 -c:v prores_ks -profile:v 0 -c:a copy output.mov  # Proxy (low quality)",
+          "ffmpeg -i input.mp4 -c:v prores_ks -profile:v 1 -c:a copy output.mov  # LT (medium)",
+          "ffmpeg -i input.mp4 -c:v prores_ks -profile:v 2 -c:a copy output.mov  # Standard",
+          "ffmpeg -i input.mp4 -c:v prores_ks -profile:v 4 -c:a pcm_s24le output.mov  # 4444 (VFX/compositing) [citation:10]"
+        ]
+      },
+      "normalize-audio": {
+        "aliases": [
+          "normalize audio",
+          "fix volume",
+          "audio normalization",
+          "volume normalize",
+          "loudness",
+          "loudnorm"
+        ],
+        "description": "Normalizes audio loudness to streaming standards",
+        "commands": [
+          "ffmpeg -i input.wav -af loudnorm=I=-14:TP=-2:LRA=11 output.wav  # standard loudness [citation:1]",
+          "ffmpeg -i input.mp4 -af loudnorm=linear=true:measured_i=-16.92:measured_tp=0.55:measured_lra=24.20 -ar 48000 -c:a libopus -ac 2 output.mka  # two-pass loudnorm [citation:4]",
+          "ffmpeg -i input.mp4 -af \"volume=1.16dB\" output.mp4  # simple volume boost [citation:4]"
+        ]
+      },
+      "subtitles": {
+        "aliases": [
+          "add subtitles",
+          "burn subtitles",
+          "hardcode subs",
+          "subtitle burn",
+          "embed subtitles",
+          "subs"
+        ],
+        "description": "Burns subtitles into video or extracts them",
+        "commands": [
+          "ffmpeg -i input.mp4 -vf \"subtitles=subs.srt,format=yuv420p\" -c:v libx264 -crf 20 -c:a copy output.mp4  # burn SRT [citation:2]",
+          "ffmpeg -i input_video.mp4 -vf ass=sub.ass output.mp4  # burn ASS subtitles [citation:6]",
+          "ffmpeg -i foo.mkv -c:s srt foo.srt  # extract subtitles as SRT [citation:8]",
+          "ffmpeg -i foo.mkv foo.ssa  # extract subtitles as SSA [citation:8]",
+          "ffmpeg -i video.mkv -map 0:s -c:s copy subs.mkv  # extract all subtitle tracks [citation:4]"
+        ]
+      },
+      "info": {
+        "aliases": [
+          "info",
+          "metadata",
+          "show info",
+          "file info",
+          "video info",
+          "what is this",
+          "details",
+          "probe"
+        ],
+        "description": "Shows detailed media file information",
+        "commands": [
+          "ffmpeg -i input.mp4  # basic info [citation:4]",
+          "ffprobe -v quiet -print_format json -show_format -show_streams input.mp4  # JSON format [citation:7]",
+          "ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 input.mp4  # get duration [citation:11]",
+          "ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0 input.mp4  # get dimensions [citation:11]",
+          "ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of default=nokey=1:noprint_wrappers=1 input.mp4  # get codec [citation:7]",
+          "ffmpeg -i input.mkv 2>&1 | grep \"Stream #0\"  # show only stream info [citation:4]"
+        ]
+      },
+      "slideshow": {
+        "aliases": [
+          "slideshow",
+          "images to video",
+          "photo slideshow",
+          "image sequence",
+          "make video from images",
+          "animation from images"
+        ],
+        "description": "Creates video from image sequence or slideshow",
+        "commands": [
+          "ffmpeg -framerate 24 -i img%03d.png output.mp4  # image sequence [citation:5]",
+          "ffmpeg -loop 1 -i img.jpg -t 30 -c:v libx264 -pix_fmt yuv420p output.mp4  # static image with duration [citation:5]",
+          "ffmpeg -framerate 1/5 -i img%03d.png -c:v libx264 -vf fps=25 -pix_fmt yuv420p output.mp4  # 5 sec per image [citation:5]",
+          "ffmpeg -framerate 10 -pattern_type glob -i '*.jpg' -c:v libx264 -pix_fmt yuv420p output.mp4  # use glob pattern [citation:5]",
+          "ffmpeg -loop 1 -i img.jpg -i audio.wav -c:v libx264 -c:a aac -shortest output.mp4  # image with audio [citation:5]"
+        ]
+      },
+      "screen-recording": {
+        "aliases": [
+          "screen capture",
+          "screen record",
+          "capture screen",
+          "screencast",
+          "record desktop",
+          "x11grab"
+        ],
+        "description": "Records screen or desktop (Linux)",
+        "commands": [
+          "ffmpeg -f x11grab -video_size 1920x1080 -i :0.0 -vframes 1 screen.png  # screenshot [citation:8]",
+          "ffmpeg -f x11grab -video_size 1920x1080 -framerate 25 -i :0.0 -c:v ffvhuff screen.mkv  # lossless screencast [citation:8]",
+          "ffmpeg -f x11grab -video_size 1920x1080 -framerate 25 -i :0.0 -f alsa -i default -c:v libx264 -preset ultrafast -c:a aac screen.mp4  # with audio [citation:8]",
+          "ffmpeg -f v4l2 -video_size 640x480 -i /dev/video0 -c:v libx264 -preset ultrafast webcam.mp4  # webcam capture [citation:8]"
+        ]
+      },
+      "webm": {
+        "aliases": [
+          "to webm",
+          "webm video",
+          "vp9",
+          "convert to webm",
+          "webm convert"
+        ],
+        "description": "Converts video to WebM VP9 format",
+        "commands": [
+          "ffmpeg -i input.mp4 -c:v libvpx-vp9 -crf 30 -b:v 0 -c:a libopus -vbr on output.webm  # VP9 conversion [citation:6]",
+          "ffmpeg -i input.mp4 -c:v libvpx-vp9 -crf 28 -b:v 0 -c:a libopus output.webm  # high quality VP9",
+          "ffmpeg -i input.webm output.mp4  # WebM to MP4 [citation:6]"
+        ]
+      },
+      "concat-demuxer": {
+        "aliases": [
+          "concat demuxer",
+          "concat without re-encode",
+          "lossless merge",
+          "quick concat"
+        ],
+        "description": "Concatenates files without re-encoding (fast)",
+        "commands": [
+          "printf \"file '1.mp4'\\nfile '2.mp4'\\nfile '3.mp4'\\n\" > list.txt && ffmpeg -f concat -safe 0 -i list.txt -c copy output.mp4  # lossless concat [citation:6]",
+          "ffmpeg -f concat -i mylist.txt -c copy output.mp4  # with text file [citation:2]"
+        ]
+      },
+      "filter-complex": {
+        "aliases": [
+          "complex filter",
+          "advanced filter",
+          "filter graph",
+          "multi-stream",
+          "complex"
+        ],
+        "description": "Uses complex filter for advanced operations",
+        "commands": [
+          "ffmpeg -i screen.mp4 -i facecam.mp4 -filter_complex \"[0:v][1:v]overlay=W-w-20:H-h-20\" -c:v libx264 output.mp4  # picture-in-picture [citation:1]",
+          "ffmpeg -i input.mp4 -filter_complex \"[0:v]split=2[s0][s1];[s0]scale=1920:1080[out1];[s1]scale=720:1280[out2]\" -map [out1] -map [out2] output.mp4  # split and scale [citation:9]",
+          "ffmpeg -i input.mp4 -filter_complex \"[0:v]crop=w:h:x:y\" output.mp4  # crop with complex filter"
+        ]
+      },
+      "image2video": {
+        "aliases": [
+          "images to video",
+          "photo to video",
+          "still to video",
+          "make from images"
+        ],
+        "description": "Creates video from a single image or image sequence",
+        "commands": [
+          "ffmpeg -loop 1 -i img.jpg -c:v libx264 -t 30 -pix_fmt yuv420p out.mp4  # single image with duration [citation:5]",
+          "ffmpeg -framerate 24 -i img%03d.png -pix_fmt yuv420p output.mp4  # sequential images",
+          "ffmpeg -start_number 126 -i img%03d.png -pix_fmt yuv420p out.mp4  # start at specific image [citation:5]"
+        ]
+      }
+    }
+  }
+}

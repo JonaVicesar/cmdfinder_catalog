@@ -1,0 +1,99 @@
+{
+  "supabase": {
+    "program_description": "Supabase CLI - local development and deployment",
+    "actions": {
+      "init": {
+        "aliases": ["init", "start here", "setup", "initialize project"],
+        "description": "Initializes a new Supabase project in the current directory [citation:4][citation:9]",
+        "commands": ["supabase init"]
+      },
+      "start": {
+        "aliases": ["start", "up", "launch", "go", "spin up", "fire it up"],
+        "description": "Starts the Supabase local development stack (requires Docker) [citation:4][citation:9]",
+        "commands": [
+          "supabase start",
+          "supabase start -x gotrue,imgproxy  # exclude certain services"
+        ]
+      },
+      "stop": {
+        "aliases": ["stop", "down", "shutdown", "halt"],
+        "description": "Stops the Supabase local development stack [citation:4][citation:9]",
+        "commands": [
+          "supabase stop",
+          "supabase stop --no-backup  # delete all data"
+        ]
+      },
+      "status": {
+        "aliases": ["status", "info", "what's up", "check", "urls"],
+        "description": "Shows the status and connection info for the local stack [citation:4][citation:9]",
+        "commands": [
+          "supabase status",
+          "supabase status -o env  # output as environment variables"
+        ]
+      },
+      "link": {
+        "aliases": ["link", "connect", "attach", "bind to remote"],
+        "description": "Links your local project to a remote Supabase project [citation:4][citation:9]",
+        "commands": ["supabase link --project-ref <your-project-ref>"]
+      },
+      "new-migration": {
+        "aliases": [
+          "migration",
+          "new migration",
+          "create migration",
+          "db change"
+        ],
+        "description": "Creates a new migration file [citation:9]",
+        "commands": ["supabase migration new <migration_name>"]
+      },
+      "push": {
+        "aliases": ["push", "deploy", "apply", "send to remote", "sync"],
+        "description": "Pushes your local schema changes to the remote project [citation:9]",
+        "commands": [
+          "supabase db push",
+          "supabase db push --dry-run  # preview what will happen"
+        ]
+      },
+      "pull": {
+        "aliases": ["pull", "fetch", "get remote", "sync down"],
+        "description": "Pulls the latest schema from the remote project [citation:9]",
+        "commands": ["supabase db pull"]
+      },
+      "reset": {
+        "aliases": ["reset", "fresh start", "wipe", "clear db"],
+        "description": "Resets the local database and reapplies all migrations [citation:9]",
+        "commands": ["supabase db reset"]
+      },
+      "diff": {
+        "aliases": ["diff", "changes", "what changed"],
+        "description": "Generates a migration from your local schema changes [citation:9]",
+        "commands": ["supabase db diff -f <migration_name>"]
+      },
+      "generate-types": {
+        "aliases": ["types", "gen types", "generate types", "typescript"],
+        "description": "Generates TypeScript types from your database schema [citation:9]",
+        "commands": [
+          "supabase gen types typescript --local > database.types.ts"
+        ]
+      },
+      "functions": {
+        "aliases": ["edge functions", "functions", "edge"],
+        "description": "Commands for managing Supabase Edge Functions [citation:9]",
+        "commands": [
+          "supabase functions new <function_name>",
+          "supabase functions serve",
+          "supabase functions deploy"
+        ]
+      },
+      "secrets": {
+        "aliases": ["secrets", "env", "set secret", "environment variables"],
+        "description": "Manages secrets for Edge Functions [citation:9]",
+        "commands": [
+          "supabase secrets set API_KEY=abc123",
+          "supabase secrets list",
+          "supabase secrets unset API_KEY"
+        ]
+      }
+    }
+  }
+}

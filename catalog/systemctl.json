@@ -1,0 +1,183 @@
+{
+  "systemctl": {
+    "program_description": "systemctl - systemd service manager",
+    "actions": {
+      "start": {
+        "aliases": [
+          "start",
+          "start service",
+          "launch",
+          "run service",
+          "turn on",
+          "go",
+          "spin up"
+        ],
+        "description": "Starts a systemd service",
+        "commands": [
+          "sudo systemctl start <service>",
+          "systemctl start --user <service>  # user service"
+        ]
+      },
+      "stop": {
+        "aliases": [
+          "stop",
+          "stop service",
+          "halt",
+          "shutdown",
+          "turn off",
+          "kill service"
+        ],
+        "description": "Stops a running systemd service",
+        "commands": [
+          "sudo systemctl stop <service>",
+          "systemctl stop --user <service>"
+        ]
+      },
+      "restart": {
+        "aliases": [
+          "restart",
+          "restart service",
+          "reload",
+          "reset service",
+          "reboot service",
+          "refresh"
+        ],
+        "description": "Restarts a systemd service (stop + start)",
+        "commands": [
+          "sudo systemctl restart <service>",
+          "sudo systemctl restart <service1> <service2>  # multiple"
+        ]
+      },
+      "reload": {
+        "aliases": [
+          "reload",
+          "reload config",
+          "refresh config",
+          "apply changes",
+          "reconfigure"
+        ],
+        "description": "Reloads the service configuration without restarting (if supported)",
+        "commands": [
+          "sudo systemctl reload <service>",
+          "sudo systemctl reload nginx  # common use case"
+        ]
+      },
+      "status": {
+        "aliases": [
+          "status",
+          "check service",
+          "is it running",
+          "service status",
+          "what's happening",
+          "show status"
+        ],
+        "description": "Shows the current status of a service",
+        "commands": [
+          "sudo systemctl status <service>",
+          "sudo systemctl status <service> -l  # show full logs",
+          "systemctl status --user <service>"
+        ]
+      },
+      "enable": {
+        "aliases": [
+          "enable",
+          "autostart",
+          "boot start",
+          "start on boot",
+          "enable on startup",
+          "add to boot"
+        ],
+        "description": "Enables a service to start automatically at boot",
+        "commands": [
+          "sudo systemctl enable <service>",
+          "sudo systemctl enable --now <service>  # enable and start immediately",
+          "systemctl enable --user <service>  # user service"
+        ]
+      },
+      "disable": {
+        "aliases": [
+          "disable",
+          "no autostart",
+          "remove from boot",
+          "disable on boot",
+          "stop autostart"
+        ],
+        "description": "Disables a service from starting automatically at boot",
+        "commands": [
+          "sudo systemctl disable <service>",
+          "sudo systemctl disable --now <service>  # disable and stop",
+          "systemctl disable --user <service>"
+        ]
+      },
+      "list": {
+        "aliases": [
+          "list",
+          "list services",
+          "show services",
+          "all services",
+          "what's installed",
+          "list units"
+        ],
+        "description": "Lists all installed services (units)",
+        "commands": [
+          "systemctl list-units",
+          "systemctl list-units --type=service",
+          "systemctl list-units --state=running  # only running",
+          "systemctl list-unit-files  # all available"
+        ]
+      },
+      "logs": {
+        "aliases": [
+          "logs",
+          "service logs",
+          "show logs",
+          "journal",
+          "view logs"
+        ],
+        "description": "Shows logs for a service (uses journalctl)",
+        "commands": [
+          "sudo journalctl -u <service>",
+          "sudo journalctl -u <service> -f  # follow in real-time",
+          "sudo journalctl -u <service> -n 50  # last 50 lines",
+          "sudo journalctl -u <service> --since today"
+        ]
+      },
+      "is-active": {
+        "aliases": ["is active", "active?", "is it running", "check running"],
+        "description": "Checks if a service is currently running",
+        "commands": [
+          "systemctl is-active <service>",
+          "systemctl is-active --quiet <service> && echo 'running'"
+        ]
+      },
+      "reload-daemon": {
+        "aliases": [
+          "reload daemon",
+          "refresh systemd",
+          "reload systemd",
+          "detect new services",
+          "reload units"
+        ],
+        "description": "Reloads systemd to detect new unit files",
+        "commands": [
+          "sudo systemctl daemon-reload",
+          "sudo systemctl daemon-reexec  # restart systemd itself"
+        ]
+      },
+      "mask": {
+        "aliases": [
+          "mask",
+          "block service",
+          "prevent start",
+          "lock service",
+          "disable completely"
+        ],
+        "description": "Completely blocks a service from starting (even manually)",
+        "commands": [
+          "sudo systemctl mask <service>",
+          "sudo systemctl unmask <service>  # unblock"
+        ]
+      }
+    }
+  }
+}

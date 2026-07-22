@@ -1,0 +1,255 @@
+{
+  "pnpm": {
+    "program_description": "pnpm - fast, disk space efficient package manager",
+    "actions": {
+      "install": {
+        "aliases": [
+          "install",
+          "i",
+          "pnpm install",
+          "get deps",
+          "install deps",
+          "setup",
+          "fetch packages",
+          "download deps",
+          "pnpm i"
+        ],
+        "description": "Installs all dependencies from package.json",
+        "commands": [
+          "pnpm install  # install all deps",
+          "pnpm i  # shorthand",
+          "pn ci  # clean install with frozen lockfile",
+          "pnpm install --frozen-lockfile  # CI mode",
+          "pnpm install --production  # production only",
+          "pnpm install --no-optional  # skip optional",
+          "pnpm install --prefer-offline"
+        ]
+      },
+      "add": {
+        "aliases": [
+          "add",
+          "add package",
+          "install package",
+          "get package",
+          "pnpm add",
+          "add dep",
+          "add dependency",
+          "gimme",
+          "need this",
+          "pnpm add pkg"
+        ],
+        "description": "Adds a package as a dependency",
+        "commands": [
+          "pnpm add <package>  # add as dependency",
+          "pnpm add -D <package>  # add as devDependency",
+          "pnpm add -d <package>  # shortcut for -D",
+          "pnpm add -O <package>  # add as optionalDependency",
+          "pnpm add -o <package>  # shortcut for -O",
+          "pnpm add -E <package>  # exact version",
+          "pnpm add -e <package>  # exact version shortcut",
+          "pnpm add <package>@latest",
+          "pnpm add <package>@1.2.3"
+        ]
+      },
+      "remove": {
+        "aliases": [
+          "remove",
+          "rm",
+          "uninstall",
+          "delete",
+          "pnpm remove",
+          "remove dep",
+          "delete package",
+          "get rid of",
+          "kill package",
+          "un",
+          "pnpm uninstall"
+        ],
+        "description": "Removes a package from dependencies",
+        "commands": [
+          "pnpm remove <package>",
+          "pnpm rm <package>  # shorthand",
+          "pnpm un <package>  # short uninstall",
+          "pnpm uninstall <package>"
+        ]
+      },
+      "update": {
+        "aliases": [
+          "update",
+          "up",
+          "upgrade",
+          "pnpm update",
+          "update deps",
+          "refresh packages",
+          "upgrade deps",
+          "latest plz"
+        ],
+        "description": "Updates packages to their latest versions",
+        "commands": [
+          "pnpm update  # update all",
+          "pnpm up  # shorthand",
+          "pnpm update <package>",
+          "pnpm update --latest  # ignore semver ranges",
+          "pnpm update -L  # shortcut",
+          "pnpm update -i  # interactive"
+        ]
+      },
+      "run": {
+        "aliases": [
+          "run",
+          "start",
+          "execute",
+          "pnpm run",
+          "run script",
+          "pnpm <script>",
+          "launch",
+          "go"
+        ],
+        "description": "Runs a script from package.json",
+        "commands": [
+          "pnpm run <script>",
+          "pnpm <script>  # shorthand",
+          "pnpm run build",
+          "pnpm run dev",
+          "pnpm test",
+          "pnpm run build -- --watch  # pass args"
+        ]
+      },
+      "dlx": {
+        "aliases": [
+          "dlx",
+          "pnx",
+          "pnpx",
+          "run binary",
+          "execute package",
+          "one-off",
+          "temporary package",
+          "try package",
+          "pnpm dlx"
+        ],
+        "description": "Runs a package binary without installing it (like npx)",
+        "commands": [
+          "pnpm dlx <package>",
+          "pnx <package>  # short alias",
+          "pnpx <package>  # npm alias",
+          "pnx create-vue my-app",
+          "pnx shx user/repo dest"
+        ]
+      },
+      "workspace": {
+        "aliases": [
+          "workspace",
+          "ws",
+          "monorepo",
+          "multi-package",
+          "recursive",
+          "all packages",
+          "everywhere",
+          "all workspaces"
+        ],
+        "description": "Runs commands across all packages in a workspace",
+        "commands": [
+          "pnpm -r run <script>  # recursive",
+          "pnpm --recursive run <script>",
+          "pnpm --filter <package> <cmd>  # filter by package",
+          "pnpm -F <package> <cmd>  # shorthand",
+          "pnpm --filter \"./packages/**\" run build"
+        ]
+      },
+      "list": {
+        "aliases": [
+          "list",
+          "ls",
+          "show deps",
+          "installed packages",
+          "what's installed",
+          "dependencies"
+        ],
+        "description": "Lists installed packages",
+        "commands": [
+          "pnpm list",
+          "pnpm ls",
+          "pnpm list -g  # global packages",
+          "pnpm why <package>  # why is this installed"
+        ]
+      },
+      "outdated": {
+        "aliases": [
+          "outdated",
+          "old deps",
+          "check updates",
+          "what's new",
+          "stale deps"
+        ],
+        "description": "Shows which packages are outdated",
+        "commands": ["pnpm outdated", "pnpm outdated <package>"]
+      },
+      "audit": {
+        "aliases": [
+          "audit",
+          "security",
+          "check security",
+          "vulnerabilities",
+          "vulns",
+          "safe check"
+        ],
+        "description": "Checks for known vulnerabilities",
+        "commands": ["pnpm audit", "pnpm audit --fix  # attempt to fix"]
+      },
+      "prune": {
+        "aliases": [
+          "prune",
+          "clean store",
+          "gc",
+          "garbage collect",
+          "free space",
+          "clean storage"
+        ],
+        "description": "Removes unreferenced packages from store",
+        "commands": [
+          "pnpm store prune",
+          "pnpm store path  # show store location",
+          "pnpm store status"
+        ]
+      },
+      "patch": {
+        "aliases": [
+          "patch",
+          "hotfix",
+          "pkg patch",
+          "edit package",
+          "fix package"
+        ],
+        "description": "Creates a patch for a package",
+        "commands": [
+          "pnpm patch <package>@<version>",
+          "pnpm patch-commit <path>",
+          "pnpm patch-remove <package>"
+        ]
+      },
+      "link": {
+        "aliases": ["link", "local link", "symlink", "link local", "dev link"],
+        "description": "Links a local package",
+        "commands": [
+          "pnpm link <path>  # link local package",
+          "pnpm add -g .  # expose bins globally"
+        ]
+      },
+      "exec": {
+        "aliases": [
+          "exec",
+          "run command",
+          "execute bin",
+          "run bin",
+          "local exec"
+        ],
+        "description": "Runs a binary in the project's context",
+        "commands": [
+          "pnpm exec <command>",
+          "pnpm exec eslint .",
+          "pnpm exec vitest"
+        ]
+      }
+    }
+  }
+}

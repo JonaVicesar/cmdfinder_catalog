@@ -1,0 +1,104 @@
+{
+  "journalctl": {
+    "program_description": "journalctl - systemd log viewer",
+    "actions": {
+      "view-logs": {
+        "aliases": ["logs", "view logs", "show logs", "journal", "print logs"],
+        "description": "Shows the full systemd journal",
+        "commands": [
+          "journalctl",
+          "journalctl -e  # jump to the end",
+          "journalctl -r  # reverse order (newest first)"
+        ]
+      },
+      "service-logs": {
+        "aliases": [
+          "service logs",
+          "unit logs",
+          "logs for service",
+          "show service"
+        ],
+        "description": "Shows logs for a specific service",
+        "commands": [
+          "journalctl -u <service>",
+          "journalctl -u nginx -f  # follow service logs",
+          "journalctl -u <service> -n 50  # last 50 lines"
+        ]
+      },
+      "follow": {
+        "aliases": ["follow", "tail", "live", "watch", "real-time", "stream"],
+        "description": "Follows logs in real-time (like tail -f)",
+        "commands": [
+          "journalctl -f",
+          "journalctl -u <service> -f",
+          "journalctl -f -n 10  # follow with initial lines"
+        ]
+      },
+      "since": {
+        "aliases": [
+          "since",
+          "from time",
+          "after",
+          "recent",
+          "today",
+          "yesterday"
+        ],
+        "description": "Shows logs since a specific time",
+        "commands": [
+          "journalctl --since today",
+          "journalctl --since \"1 hour ago\"",
+          "journalctl --since 2024-01-01 --until 2024-01-02",
+          "journalctl --since yesterday -u <service>"
+        ]
+      },
+      "filter": {
+        "aliases": ["filter", "grep", "find", "search logs", "look for"],
+        "description": "Filters logs by priority level or string",
+        "commands": [
+          "journalctl -p err  # errors only",
+          "journalctl -p 3  # critical and below (3=err)",
+          "journalctl | grep <pattern>",
+          "journalctl -u <service> -p warning"
+        ]
+      },
+      "boot": {
+        "aliases": [
+          "boot",
+          "boot logs",
+          "current boot",
+          "previous boot",
+          "since boot"
+        ],
+        "description": "Shows logs from a specific boot session",
+        "commands": [
+          "journalctl -b  # current boot",
+          "journalctl -b -1  # previous boot",
+          "journalctl -b 0  # current boot (explicit)"
+        ]
+      },
+      "disk-usage": {
+        "aliases": ["disk usage", "size", "how big", "journal size", "storage"],
+        "description": "Shows how much disk space the journal is using",
+        "commands": [
+          "journalctl --disk-usage",
+          "journalctl --vacuum-size=100M  # reduce to 100MB"
+        ]
+      },
+      "verbose": {
+        "aliases": [
+          "verbose",
+          "full",
+          "details",
+          "all fields",
+          "show metadata"
+        ],
+        "description": "Shows logs with all available fields/metadata",
+        "commands": [
+          "journalctl -o verbose",
+          "journalctl -o json",
+          "journalctl -o export"
+        ]
+      }
+    }
+  }
+}

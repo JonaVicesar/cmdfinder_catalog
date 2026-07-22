@@ -1,0 +1,209 @@
+{
+  "flatpak": {
+    "program_description": "Flatpak - Linux application packaging and distribution system",
+    "actions": {
+      "install": {
+        "aliases": [
+          "install",
+          "flatpak install",
+          "get app",
+          "add app",
+          "install flatpak",
+          "get software",
+          "install program"
+        ],
+        "description": "Installs a Flatpak application or runtime",
+        "commands": [
+          "flatpak install <app-id>  # install an app from Flathub [citation:11]",
+          "flatpak install flathub <app-id>  # install from specific remote",
+          "flatpak install --user <app-id>  # install for current user only [citation:5]",
+          "flatpak install <app-id> // beta  # install specific branch",
+          "flatpak install --installation=extra <app-id>  # install to custom location [citation:2]"
+        ]
+      },
+      "uninstall": {
+        "aliases": [
+          "uninstall",
+          "remove",
+          "delete app",
+          "remove app",
+          "flatpak remove",
+          "uninstall flatpak",
+          "get rid of app",
+          "delete flatpak"
+        ],
+        "description": "Removes an installed Flatpak application",
+        "commands": [
+          "flatpak uninstall <app-id>  # remove app [citation:11]",
+          "flatpak uninstall <app-id> --delete-data  # remove app and its data [citation:5]",
+          "flatpak uninstall --unused  # remove unused runtimes",
+          "flatpak uninstall --user <app-id>  # remove user installation"
+        ]
+      },
+      "run": {
+        "aliases": [
+          "run",
+          "launch",
+          "start",
+          "open app",
+          "flatpak run",
+          "run flatpak",
+          "launch app"
+        ],
+        "description": "Launches a Flatpak application",
+        "commands": [
+          "flatpak run <app-id>  # run the app [citation:11]",
+          "flatpak run --runtime-version=master <app-id>  # test with different runtime [citation:2]",
+          "flatpak run --runtime=org.gnome.Sdk <app-id>  # use SDK as runtime [citation:2]",
+          "flatpak run --command=bash <app-id>  # run specific command"
+        ]
+      },
+      "list": {
+        "aliases": [
+          "list",
+          "show apps",
+          "installed apps",
+          "flatpak list",
+          "what's installed",
+          "view installed"
+        ],
+        "description": "Lists installed Flatpak applications and runtimes",
+        "commands": [
+          "flatpak list  # show all installed apps [citation:11]",
+          "flatpak list --user  # show user installations",
+          "flatpak list --columns=name,application  # show with specific columns [citation:11]",
+          "flatpak list --app  # show only applications",
+          "flatpak list --runtime  # show only runtimes"
+        ]
+      },
+      "search": {
+        "aliases": [
+          "search",
+          "find app",
+          "look for",
+          "find flatpak",
+          "search flatpak",
+          "find program"
+        ],
+        "description": "Searches for Flatpak applications in configured remotes",
+        "commands": [
+          "flatpak search <name>  # search for app [citation:11]",
+          "flatpak search --user <name>  # search in user remotes [citation:5]",
+          "flatpak search --columns=application,description <name>"
+        ]
+      },
+      "update": {
+        "aliases": [
+          "update",
+          "upgrade",
+          "flatpak update",
+          "refresh apps",
+          "update all",
+          "update flatpak"
+        ],
+        "description": "Updates installed Flatpak applications and runtimes",
+        "commands": [
+          "flatpak update  # update all apps [citation:11]",
+          "flatpak update <app-id>  # update specific app",
+          "flatpak update --commit=<hash> <app-id>  # downgrade to specific commit [citation:2]",
+          "flatpak update --user  # update user installations"
+        ]
+      },
+      "info": {
+        "aliases": [
+          "info",
+          "show info",
+          "details",
+          "app info",
+          "flatpak info",
+          "what is this"
+        ],
+        "description": "Shows information about an installed Flatpak application",
+        "commands": [
+          "flatpak info <app-id>  # show app details [citation:11]",
+          "flatpak remote-info flathub <app-id>  # show info from remote",
+          "flatpak info --show-permissions <app-id>  # show permissions"
+        ]
+      },
+      "remote-add": {
+        "aliases": [
+          "add remote",
+          "add source",
+          "flatpak remote",
+          "add repo",
+          "add flathub"
+        ],
+        "description": "Adds a Flatpak repository (remote)",
+        "commands": [
+          "flatpak remote-add flathub https://dl.flathub.org/repo/flathub.flatpakrepo  # add Flathub [citation:11]",
+          "flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo  # user install [citation:5]",
+          "flatpak remote-add --installation=extra flathub https://dl.flathub.org/repo/flathub.flatpakrepo  # custom installation [citation:2]"
+        ]
+      },
+      "remote-list": {
+        "aliases": [
+          "list remotes",
+          "show remotes",
+          "sources",
+          "flatpak remotes",
+          "show sources"
+        ],
+        "description": "Lists configured Flatpak repositories",
+        "commands": [
+          "flatpak remotes  # list all remotes [citation:11]",
+          "flatpak remotes --user  # show user remotes",
+          "flatpak remote-list  # alternative command"
+        ]
+      },
+      "make-current": {
+        "aliases": [
+          "make current",
+          "set version",
+          "switch branch",
+          "activate version",
+          "flatpak current"
+        ],
+        "description": "Makes a specific version/current of an app visible to the host [citation:8]",
+        "commands": [
+          "flatpak make-current <app-id> <branch>  # set current branch [citation:8]",
+          "flatpak make-current --user <app-id> <branch>  # for user installations",
+          "flatpak make-current --installation=extra <app-id> <branch>  # custom installation"
+        ]
+      },
+      "mask": {
+        "aliases": [
+          "mask",
+          "block update",
+          "hold version",
+          "lock app",
+          "prevent update"
+        ],
+        "description": "Masks a ref to prevent automatic updates [citation:2]",
+        "commands": [
+          "flatpak mask <app-id>  # prevent updates [citation:2]",
+          "flatpak mask <app-id>//beta  # mask specific branch",
+          "flatpak mask --user <app-id>  # mask in user installation",
+          "flatpak mask --list  # show masked patterns [citation:2]",
+          "flatpak mask --remove <app-id>  # unmask"
+        ]
+      },
+      "bisect": {
+        "aliases": [
+          "bisect",
+          "find bug",
+          "regression hunt",
+          "find bad commit",
+          "flatpak bisect"
+        ],
+        "description": "Bisects app builds to find regressions [citation:2]",
+        "commands": [
+          "flatpak-bisect <app-id> start  # start bisect session [citation:2]",
+          "flatpak-bisect <app-id> bad  # mark current as bad",
+          "flatpak-bisect <app-id> good  # mark current as good",
+          "flatpak-bisect <app-id> log  # view build history",
+          "flatpak-bisect <app-id> checkout <commit>  # checkout specific commit [citation:2]"
+        ]
+      }
+    }
+  }
+}

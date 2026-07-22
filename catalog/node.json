@@ -1,0 +1,236 @@
+{
+  "node": {
+    "program_description": "Node.js - JavaScript runtime",
+    "actions": {
+      "run-file": {
+        "aliases": [
+          "run",
+          "node",
+          "execute",
+          "run script",
+          "execute node",
+          "run js",
+          "start node"
+        ],
+        "description": "Runs a JavaScript file with Node.js",
+        "commands": [
+          "node <file>.js",
+          "node --watch <file>.js  # auto-restart on changes (Node 18+)",
+          "node -r dotenv/config <file>.js  # with dotenv",
+          "node --require <module> <file>.js  # preload module"
+        ]
+      },
+      "repl": {
+        "aliases": [
+          "repl",
+          "node console",
+          "interactive",
+          "node shell",
+          "js console",
+          "playground",
+          "try js"
+        ],
+        "description": "Opens Node.js REPL (interactive console)",
+        "commands": [
+          "node",
+          "node -i  # interactive mode",
+          "node --experimental-repl-await  # top-level await in REPL"
+        ]
+      },
+      "version": {
+        "aliases": [
+          "version",
+          "node version",
+          "check version",
+          "what version",
+          "-v",
+          "v"
+        ],
+        "description": "Shows the installed Node.js version",
+        "commands": [
+          "node -v",
+          "node --version",
+          "node -p process.version  # print version from code"
+        ]
+      },
+      "inspect": {
+        "aliases": [
+          "inspect",
+          "debug",
+          "debug node",
+          "node debug",
+          "breakpoints",
+          "debugger"
+        ],
+        "description": "Runs Node.js with debugger enabled",
+        "commands": [
+          "node --inspect <file>.js",
+          "node --inspect-brk <file>.js  # pause at first line",
+          "node --inspect=9229 <file>.js  # specify port",
+          "node --inspect --enable-source-maps <file>.js"
+        ]
+      },
+      "module-lookup": {
+        "aliases": [
+          "find module",
+          "find package",
+          "module path",
+          "where is module",
+          "resolve module"
+        ],
+        "description": "Shows where Node.js loads a module from",
+        "commands": [
+          "node -p \"require.resolve('<module>')\"",
+          "node -e \"console.log(require.resolve('<module>'))\"",
+          "npm ls <package>  # check installed version"
+        ]
+      },
+      "env-vars": {
+        "aliases": [
+          "environment",
+          "env",
+          "set env",
+          "node env",
+          "NODE_ENV",
+          "environment variables"
+        ],
+        "description": "Runs Node with environment variables",
+        "commands": [
+          "NODE_ENV=production node <file>.js",
+          "node --env-file=.env <file>.js  # load env file (Node 20+)",
+          "node -r dotenv/config <file>.js  # with dotenv package",
+          "node -e \"console.log(process.env)\"  # show all env vars"
+        ]
+      },
+      "memory": {
+        "aliases": [
+          "memory usage",
+          "max memory",
+          "heap size",
+          "increase memory",
+          "old space",
+          "node memory"
+        ],
+        "description": "Runs Node with custom memory limits",
+        "commands": [
+          "node --max-old-space-size=4096 <file>.js  # set 4GB heap",
+          "node --max-semi-space-size=64 <file>.js  # set semispace",
+          "node --trace-gc <file>.js  # trace garbage collection"
+        ]
+      },
+      "watch-mode": {
+        "aliases": [
+          "watch",
+          "auto-restart",
+          "nodemon",
+          "live reload",
+          "auto restart",
+          "watch changes"
+        ],
+        "description": "Runs Node with file watching for auto-restart",
+        "commands": [
+          "node --watch <file>.js  # built-in watch (Node 18+)",
+          "nodemon <file>.js  # with nodemon package",
+          "nodemon --watch src <file>.js  # watch specific folder",
+          "node --watch-path=<folder> <file>.js  # watch specific path"
+        ]
+      },
+      "es-modules": {
+        "aliases": [
+          "esm",
+          "module",
+          "import",
+          "es modules",
+          "type module",
+          "module syntax"
+        ],
+        "description": "Runs Node with ES Module support",
+        "commands": [
+          "node --input-type=module -e \"import { thing } from 'module'\"",
+          "node --experimental-specifier-resolution=node <file>.mjs",
+          "node --loader ts-node/esm <file>.ts  # with TypeScript loader",
+          "node --experimental-json-modules <file>.js  # import JSON"
+        ]
+      },
+      "eval": {
+        "aliases": [
+          "eval",
+          "evaluate",
+          "e",
+          "run code",
+          "execute code",
+          "one-liner",
+          "quick js"
+        ],
+        "description": "Evaluates JavaScript code from the command line",
+        "commands": [
+          "node -e \"console.log('hello')\"",
+          "node -p \"1+1\"  # print the result",
+          "node -e \"const {readFileSync} = require('fs'); console.log(readFileSync('file.txt', 'utf8'))\""
+        ]
+      },
+      "import-map": {
+        "aliases": [
+          "import map",
+          "subpath",
+          "import mapping",
+          "module aliases"
+        ],
+        "description": "Runs Node with import map for module aliasing",
+        "commands": [
+          "node --import-map=<file>.json <file>.js",
+          "node --loader=import-map-loader --import-map=<file>.json <file>.js"
+        ]
+      },
+      "process-args": {
+        "aliases": [
+          "args",
+          "arguments",
+          "argv",
+          "command line args",
+          "process.argv",
+          "node args"
+        ],
+        "description": "Passes arguments to a Node script",
+        "commands": [
+          "node <file>.js arg1 arg2 arg3",
+          "node <file>.js --flag --option=value",
+          "node -e \"console.log(process.argv.slice(2))\" -- hello world"
+        ]
+      },
+      "node-gyp": {
+        "aliases": [
+          "compile native",
+          "native addon",
+          "rebuild",
+          "node-gyp",
+          "compile c++",
+          "native module"
+        ],
+        "description": "Compiles native addons for Node.js",
+        "commands": [
+          "node-gyp configure",
+          "node-gyp build",
+          "node-gyp rebuild",
+          "node-gyp clean"
+        ]
+      },
+      "npm-scripts": {
+        "aliases": [
+          "npm run",
+          "run scripts",
+          "execute npm script",
+          "npm start",
+          "package scripts"
+        ],
+        "description": "Runs scripts from package.json",
+        "commands": [
+          "npm run <script>",
+          "npm start  # shortcut for start script",
+          "npm run test  # run tests",
+          "npm run build  # build project"
+        ]
+      }
+    }
+  }
+}

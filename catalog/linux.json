@@ -1,0 +1,275 @@
+{
+  "linux": {
+    "program_description": "Linux - general system commands",
+    "actions": {
+      "list-files": {
+        "aliases": [
+          "show files",
+          "see what's here",
+          "list all",
+          "what files",
+          "show everything",
+          "ls",
+          "dir",
+          "view folder",
+          "show directory",
+          "what's in here"
+        ],
+        "description": "Lists files and directories in current or specified location",
+        "commands": [
+          "ls",
+          "ls -la  # show all files with details",
+          "ls -lh  # human readable sizes",
+          "ls -lt  # sorted by time",
+          "ls -ltr  # sorted by time reversed",
+          "ll  # common alias for ls -alF"
+        ]
+      },
+      "change-directory": {
+        "aliases": [
+          "go to",
+          "cd",
+          "move to folder",
+          "enter directory",
+          "jump to",
+          "go home",
+          "go back",
+          "up one",
+          "go up",
+          "root"
+        ],
+        "description": "Changes the current working directory",
+        "commands": [
+          "cd <directory>",
+          "cd ~  # go home",
+          "cd ..  # go up one level",
+          "cd /  # go to root",
+          "cd -  # go to previous directory",
+          "cd ../..  # go up two levels"
+        ]
+      },
+      "copy-files": {
+        "aliases": [
+          "copy",
+          "duplicate",
+          "cp",
+          "clone file",
+          "make copy",
+          "copy folder",
+          "copy directory"
+        ],
+        "description": "Copies files or directories",
+        "commands": [
+          "cp <source> <destination>",
+          "cp -r <source> <destination>  # copy entire directory",
+          "cp -i <source> <destination>  # prompt before overwrite",
+          "cp -u <source> <destination>  # update only if newer"
+        ]
+      },
+      "move-files": {
+        "aliases": [
+          "move",
+          "mv",
+          "rename",
+          "relocate",
+          "move file",
+          "move folder",
+          "rename file"
+        ],
+        "description": "Moves or renames files/directories",
+        "commands": [
+          "mv <source> <destination>",
+          "mv <file> <new-name>  # rename file",
+          "mv -i <source> <destination>  # prompt before overwrite"
+        ]
+      },
+      "delete-files": {
+        "aliases": [
+          "delete",
+          "remove",
+          "rm",
+          "delete file",
+          "remove file",
+          "delete folder",
+          "remove folder",
+          "force delete",
+          "rm -rf",
+          "nuke",
+          "destroy",
+          "kill file"
+        ],
+        "description": "Deletes files or directories (careful!)",
+        "commands": [
+          "rm <file>",
+          "rm -f <file>  # force delete without confirmation",
+          "rm -r <directory>  # delete directory recursively",
+          "rm -rf <directory>  # force delete directory (dangerous)",
+          "rm -i <file>  # prompt before deletion"
+        ]
+      },
+      "view-file": {
+        "aliases": [
+          "cat",
+          "show file",
+          "print file",
+          "view content",
+          "read file",
+          "see file",
+          "display file",
+          "show content"
+        ],
+        "description": "Displays the content of a file",
+        "commands": [
+          "cat <file>",
+          "cat -n <file>  # show line numbers",
+          "less <file>  # scrollable view",
+          "head <file>  # show first lines",
+          "tail <file>  # show last lines",
+          "tail -f <file>  # follow file updates (logs)"
+        ]
+      },
+      "find-files": {
+        "aliases": [
+          "search files",
+          "find",
+          "locate file",
+          "find file",
+          "search everywhere",
+          "where is",
+          "find by name"
+        ],
+        "description": "Searches for files and directories",
+        "commands": [
+          "find <directory> -name <pattern>",
+          "find . -name \"*.txt\"  # find all txt files",
+          "find / -name \"<file>\" 2>/dev/null  # search entire system",
+          "locate <file>  # faster search using database",
+          "which <command>  # find command location",
+          "whereis <command>  # find binary/source/man pages"
+        ]
+      },
+      "permissions": {
+        "aliases": [
+          "chmod",
+          "change permissions",
+          "set permissions",
+          "make executable",
+          "make readable",
+          "permissions",
+          "change mode"
+        ],
+        "description": "Changes file permissions",
+        "commands": [
+          "chmod 755 <file>  # rwxr-xr-x",
+          "chmod +x <file>  # make executable",
+          "chmod -R 755 <directory>  # recursive",
+          "chown <user> <file>  # change owner",
+          "chown <user>:<group> <file>  # change owner and group"
+        ]
+      },
+      "processes": {
+        "aliases": [
+          "ps",
+          "show processes",
+          "what's running",
+          "top",
+          "process list",
+          "view processes",
+          "htop",
+          "running programs"
+        ],
+        "description": "Shows running processes",
+        "commands": [
+          "ps  # current user processes",
+          "ps aux  # all processes",
+          "top  # interactive process viewer",
+          "htop  # enhanced top (if installed)",
+          "ps aux | grep <pattern>  # search specific process",
+          "kill <pid>  # kill process",
+          "kill -9 <pid>  # force kill process"
+        ]
+      },
+      "archive": {
+        "aliases": [
+          "compress",
+          "zip",
+          "unzip",
+          "extract",
+          "tar",
+          "archive",
+          "compress folder",
+          "extract archive",
+          "unpack",
+          "package"
+        ],
+        "description": "Compresses or extracts files",
+        "commands": [
+          "tar -czvf <archive>.tar.gz <folder>  # create tar.gz",
+          "tar -xzvf <archive>.tar.gz  # extract tar.gz",
+          "zip -r <archive>.zip <folder>  # create zip",
+          "unzip <archive>.zip  # extract zip",
+          "tar -xvf <archive>.tar  # extract tar",
+          "tar -tvf <archive>.tar  # list tar contents"
+        ]
+      },
+      "system-info": {
+        "aliases": [
+          "system info",
+          "what system",
+          "uname",
+          "kernel info",
+          "os info",
+          "uptime",
+          "whoami",
+          "hostname"
+        ],
+        "description": "Shows system information",
+        "commands": [
+          "uname -a  # all system info",
+          "hostname  # system hostname",
+          "whoami  # current user",
+          "uptime  # system uptime",
+          "df -h  # disk usage human readable",
+          "free -h  # memory usage human readable",
+          "lscpu  # CPU info"
+        ]
+      },
+      "download": {
+        "aliases": [
+          "download",
+          "wget",
+          "curl",
+          "get file",
+          "download file",
+          "fetch",
+          "grab file"
+        ],
+        "description": "Downloads files from the internet",
+        "commands": [
+          "wget <url>",
+          "wget -O <output> <url>  # save with different name",
+          "curl -O <url>  # download with curl",
+          "curl -L <url>  # follow redirects"
+        ]
+      },
+      "search-text": {
+        "aliases": [
+          "grep",
+          "search in files",
+          "find text",
+          "look for",
+          "find in file",
+          "search content",
+          "find pattern"
+        ],
+        "description": "Searches for text patterns in files",
+        "commands": [
+          "grep <pattern> <file>",
+          "grep -r <pattern> <directory>  # recursive search",
+          "grep -i <pattern> <file>  # case insensitive",
+          "grep -v <pattern> <file>  # invert match"
+        ]
+      }
+    }
+  }
+}

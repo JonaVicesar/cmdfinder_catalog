@@ -1,0 +1,256 @@
+{
+  "kubernetes": {
+    "program_description": "Kubernetes - container orchestration (kubectl)",
+    "actions": {
+      "get-pods": {
+        "aliases": [
+          "pods",
+          "show pods",
+          "list pods",
+          "what's running",
+          "get pods",
+          "see pods",
+          "running pods"
+        ],
+        "description": "Lists all pods in the current or specified namespace",
+        "commands": [
+          "kubectl get pods",
+          "kubectl get pods -n <namespace>",
+          "kubectl get pods -A  # all namespaces",
+          "kubectl get pods -w  # watch mode",
+          "kubectl get pods -o wide  # with more details"
+        ]
+      },
+      "logs": {
+        "aliases": [
+          "logs",
+          "show logs",
+          "view logs",
+          "pod logs",
+          "container logs",
+          "print logs",
+          "what happened",
+          "show output",
+          "debug log"
+        ],
+        "description": "Shows logs from a pod or container",
+        "commands": [
+          "kubectl logs <pod-name>",
+          "kubectl logs -f <pod-name>  # follow in real-time",
+          "kubectl logs <pod-name> -c <container-name>  # specific container",
+          "kubectl logs <pod-name> --tail=50  # last 50 lines",
+          "kubectl logs <pod-name> --since=1h  # logs from last hour",
+          "kubectl logs -l app=<label>  # all pods with label"
+        ]
+      },
+      "exec": {
+        "aliases": [
+          "exec",
+          "enter pod",
+          "shell into pod",
+          "ssh into container",
+          "get inside",
+          "bash into pod",
+          "container shell",
+          "interactive shell"
+        ],
+        "description": "Executes a command or opens a shell inside a container",
+        "commands": [
+          "kubectl exec -it <pod-name> -- /bin/bash",
+          "kubectl exec -it <pod-name> -- sh  # if no bash",
+          "kubectl exec -it <pod-name> -c <container> -- /bin/bash  # specific container",
+          "kubectl exec <pod-name> -- <command>  # run single command",
+          "kubectl exec -it <pod-name> -- /bin/bash -c \"<command>\""
+        ]
+      },
+      "port-forward": {
+        "aliases": [
+          "port-forward",
+          "forward",
+          "proxy port",
+          "expose port",
+          "forward port",
+          "tunnel",
+          "local access"
+        ],
+        "description": "Forwards a local port to a pod or service",
+        "commands": [
+          "kubectl port-forward <pod-name> <local-port>:<pod-port>",
+          "kubectl port-forward svc/<service> <local-port>:<service-port>",
+          "kubectl port-forward <pod-name> 8080:80  # simple example",
+          "kubectl port-forward <pod-name> 8080:8080 -n <namespace>"
+        ]
+      },
+      "restart-deployment": {
+        "aliases": [
+          "restart",
+          "restart deployment",
+          "rebuild",
+          "reload",
+          "reset",
+          "force restart",
+          "redeploy"
+        ],
+        "description": "Restarts a deployment by rolling it out again",
+        "commands": [
+          "kubectl rollout restart deployment/<deployment-name>",
+          "kubectl rollout restart deployment/<deployment-name> -n <namespace>",
+          "kubectl rollout status deployment/<deployment-name>  # check progress"
+        ]
+      },
+      "scale": {
+        "aliases": [
+          "scale",
+          "scale up",
+          "scale down",
+          "scale replicas",
+          "change replicas",
+          "more pods",
+          "fewer pods"
+        ],
+        "description": "Scales the number of replicas in a deployment",
+        "commands": [
+          "kubectl scale deployment <deployment> --replicas=<number>",
+          "kubectl scale deployment -n <namespace> <deployment> --replicas=<number>",
+          "kubectl scale --current-replicas=3 --replicas=5 deployment/<deployment>  # conditional"
+        ]
+      },
+      "describe": {
+        "aliases": [
+          "describe",
+          "details",
+          "show details",
+          "inspect",
+          "what's wrong",
+          "diagnose",
+          "info"
+        ],
+        "description": "Shows detailed information about a resource (great for debugging)",
+        "commands": [
+          "kubectl describe pod <pod-name>",
+          "kubectl describe deployment <deployment-name>",
+          "kubectl describe service <service-name>",
+          "kubectl describe node <node-name>"
+        ]
+      },
+      "delete": {
+        "aliases": [
+          "delete",
+          "remove",
+          "kill pod",
+          "nuke pod",
+          "get rid of",
+          "delete pod",
+          "remove pod"
+        ],
+        "description": "Deletes a pod or other resource",
+        "commands": [
+          "kubectl delete pod <pod-name>",
+          "kubectl delete deployment <deployment-name>",
+          "kubectl delete -f <file.yaml>",
+          "kubectl delete pod <pod-name> --grace-period=0 --force  # force delete"
+        ]
+      },
+      "apply": {
+        "aliases": [
+          "apply",
+          "deploy",
+          "apply config",
+          "create from yaml",
+          "deploy yaml",
+          "apply manifest"
+        ],
+        "description": "Applies a configuration to the cluster from a file",
+        "commands": [
+          "kubectl apply -f <file.yaml>",
+          "kubectl apply -f <directory>/",
+          "kubectl apply -f <url>  # from URL"
+        ]
+      },
+      "get-services": {
+        "aliases": [
+          "services",
+          "svc",
+          "show services",
+          "list services",
+          "what's exposed"
+        ],
+        "description": "Lists services in the current namespace",
+        "commands": [
+          "kubectl get services",
+          "kubectl get svc",
+          "kubectl get svc -n <namespace>",
+          "kubectl get svc -A"
+        ]
+      },
+      "get-deployments": {
+        "aliases": [
+          "deployments",
+          "deploy",
+          "show deployments",
+          "list deployments"
+        ],
+        "description": "Lists deployments in the current namespace",
+        "commands": [
+          "kubectl get deployments",
+          "kubectl get deploy",
+          "kubectl get deploy -n <namespace>",
+          "kubectl get deploy -A"
+        ]
+      },
+      "rollback": {
+        "aliases": [
+          "rollback",
+          "undo",
+          "revert",
+          "go back",
+          "oops",
+          "my bad",
+          "take it back"
+        ],
+        "description": "Rolls back a deployment to a previous revision",
+        "commands": [
+          "kubectl rollout undo deployment/<deployment-name>",
+          "kubectl rollout undo deployment/<deployment-name> --to-revision=<revision>",
+          "kubectl rollout history deployment/<deployment-name>  # list revisions"
+        ]
+      },
+      "get-nodes": {
+        "aliases": ["nodes", "show nodes", "list nodes", "cluster nodes"],
+        "description": "Lists nodes in the cluster",
+        "commands": ["kubectl get nodes", "kubectl get nodes -o wide"]
+      },
+      "contexts": {
+        "aliases": [
+          "context",
+          "switch context",
+          "change cluster",
+          "kubectl context",
+          "which cluster"
+        ],
+        "description": "Manages kubectl contexts (clusters)",
+        "commands": [
+          "kubectl config get-contexts",
+          "kubectl config use-context <context-name>",
+          "kubectl config current-context"
+        ]
+      },
+      "top": {
+        "aliases": [
+          "top",
+          "metrics",
+          "resource usage",
+          "cpu usage",
+          "memory usage",
+          "show resources"
+        ],
+        "description": "Shows resource usage (CPU and memory) for pods or nodes",
+        "commands": [
+          "kubectl top pods",
+          "kubectl top pods -n <namespace>",
+          "kubectl top nodes"
+        ]
+      }
+    }
+  }
+}
