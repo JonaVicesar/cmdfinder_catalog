@@ -1,0 +1,98 @@
+{
+  "ssh": {
+    "program_description": "ssh - secure remote connection",
+    "actions": {
+      "connect-server": {
+        "aliases": [
+          "connect to server",
+          "ssh login",
+          "remote login",
+          "connect remote",
+          "remote shell",
+          "log in remotely",
+          "ssh connect"
+        ],
+        "description": "Connects to a remote server",
+        "commands": [
+          "ssh user@ip_or_domain",
+          "ssh user@ip_or_domain -p <port>  # if not using port 22"
+        ]
+      },
+      "generate-key": {
+        "aliases": [
+          "generate ssh key",
+          "create key",
+          "ssh-keygen",
+          "make ssh key",
+          "generate key pair",
+          "new ssh key"
+        ],
+        "description": "Generates a public/private key pair",
+        "commands": ["ssh-keygen -t ed25519 -C \"your_email@example.com\""]
+      },
+      "copy-public-key": {
+        "aliases": [
+          "copy ssh key",
+          "copy id",
+          "authorize key",
+          "setup passwordless login",
+          "install public key",
+          "ssh-copy-id"
+        ],
+        "description": "Copies your public key to the server for passwordless login",
+        "commands": ["ssh-copy-id user@ip_or_domain"]
+      },
+      "copy-file": {
+        "aliases": [
+          "copy file via ssh",
+          "scp",
+          "transfer file",
+          "upload file",
+          "download file",
+          "file transfer",
+          "secure copy"
+        ],
+        "description": "Copies files between your machine and a remote server",
+        "commands": [
+          "scp file.txt user@ip:/path/destination",
+          "scp -r folder/ user@ip:/path/destination  # recursive for folders",
+          "scp user@ip:/path/file.txt .  # download from server"
+        ]
+      },
+      "port-forwarding": {
+        "aliases": [
+          "ssh tunnel",
+          "forward port",
+          "local tunnel",
+          "tunnel traffic",
+          "ssh forwarding"
+        ],
+        "description": "Forwards a remote port to your local machine",
+        "commands": ["ssh -L 8080:localhost:80 user@ip_or_domain"]
+      },
+      "keep-alive": {
+        "aliases": [
+          "keep connection alive",
+          "prevent timeout",
+          "stay connected",
+          "keep alive",
+          "no disconnection",
+          "keep ssh alive"
+        ],
+        "description": "Prevents the connection from timing out due to inactivity",
+        "commands": ["ssh -o ServerAliveInterval=60 user@ip_or_domain"]
+      },
+      "run-remote-command": {
+        "aliases": [
+          "run remote command",
+          "execute remote command",
+          "one-liner ssh",
+          "remote execution",
+          "ssh command"
+        ],
+        "description": "Runs a single command without starting an interactive session",
+        "commands": ["ssh user@ip_or_domain 'command to run'"]
+      }
+    }
+  }
+}

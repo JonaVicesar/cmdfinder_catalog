@@ -1,0 +1,95 @@
+{
+  "nmap": {
+    "program_description": "nmap - network scanning tool",
+    "actions": {
+      "basic-scan": {
+        "aliases": [
+          "simple scan",
+          "ping scan",
+          "quick scan",
+          "basic scan",
+          "fast scan",
+          "quick nmap"
+        ],
+        "description": "Quick scan of common ports",
+        "commands": ["nmap <ip_or_domain>"]
+      },
+      "scan-specific-ports": {
+        "aliases": [
+          "scan specific ports",
+          "port scan",
+          "scan selected ports",
+          "specify ports",
+          "specific ports"
+        ],
+        "description": "Scans only the specified ports",
+        "commands": [
+          "nmap -p 22,80,443 <ip_or_domain>",
+          "nmap -p 1-1000 <ip_or_domain>  # port range"
+        ]
+      },
+      "detect-os": {
+        "aliases": [
+          "os detection",
+          "detect operating system",
+          "identify os",
+          "os fingerprint",
+          "find os",
+          "os scan"
+        ],
+        "description": "Attempts to detect the operating system of the host",
+        "commands": ["sudo nmap -O <ip_or_domain>"]
+      },
+      "detect-services": {
+        "aliases": [
+          "service detection",
+          "detect versions",
+          "identify services",
+          "version scan",
+          "what's running",
+          "service versions"
+        ],
+        "description": "Detects versions of services running on open ports",
+        "commands": ["nmap -sV <ip_or_domain>"]
+      },
+      "aggressive-scan": {
+        "aliases": [
+          "aggressive scan",
+          "full scan",
+          "complete scan",
+          "in-depth scan",
+          "detailed scan",
+          "comprehensive scan"
+        ],
+        "description": "Comprehensive scan: OS, version, scripts, and traceroute",
+        "commands": ["sudo nmap -A <ip_or_domain>"]
+      },
+      "scan-network": {
+        "aliases": [
+          "scan network",
+          "scan subnet",
+          "discover hosts",
+          "network discovery",
+          "find devices",
+          "host discovery"
+        ],
+        "description": "Scans all hosts in a subnet",
+        "commands": [
+          "nmap -sn 192.168.1.0/24  # only detects live hosts, no ports"
+        ]
+      },
+      "stealth-scan": {
+        "aliases": [
+          "stealth scan",
+          "syn scan",
+          "avoid detection",
+          "quiet scan",
+          "half-open scan",
+          "syn nmap"
+        ],
+        "description": "SYN scan, harder to detect by firewalls/logs",
+        "commands": ["sudo nmap -sS <ip_or_domain>"]
+      }
+    }
+  }
+}
