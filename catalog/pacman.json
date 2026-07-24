@@ -1,0 +1,392 @@
+{
+  "pacman": {
+    "program_description": "pacman - package manager for Arch Linux and derivatives",
+    "actions": {
+      "install": {
+        "aliases": [
+          "install",
+          "i",
+          "pacman install",
+          "get package",
+          "install package",
+          "add package",
+          "get app",
+          "install app",
+          "need this",
+          "gimme",
+          "pacman -S",
+          "setup",
+          "install program",
+          "grab package",
+          "add app",
+          "install software"
+        ],
+        "description": "Installs a package from the repositories",
+        "commands": [
+          "sudo pacman -S <package>  # install package",
+          "sudo pacman -S <package1> <package2>  # install multiple",
+          "sudo pacman -S --noconfirm <package>  # auto yes",
+          "sudo pacman -S --needed <package>  # skip if already installed",
+          "sudo pacman -S --asdeps <package>  # install as dependency",
+          "sudo pacman -S --as-explicit <package>  # install as explicitly",
+          "sudo pacman -S --overwrite <pattern> <package>  # overwrite conflicts",
+          "sudo pacman -U <file>.pkg.tar.zst  # install local package",
+          "sudo pacman -U <url>  # install from URL",
+          "sudo pacman -Sy <package>  # refresh cache and install"
+        ]
+      },
+      "remove": {
+        "aliases": [
+          "remove",
+          "rm",
+          "uninstall",
+          "delete",
+          "pacman remove",
+          "remove package",
+          "delete package",
+          "get rid of",
+          "kill package",
+          "uninstall package",
+          "bye package",
+          "pacman -R",
+          "remove software"
+        ],
+        "description": "Removes a package from the system",
+        "commands": [
+          "sudo pacman -R <package>  # remove package",
+          "sudo pacman -R <package1> <package2>  # remove multiple",
+          "sudo pacman -R --noconfirm <package>  # auto yes",
+          "sudo pacman -R -c <package>  # remove with dependencies",
+          "sudo pacman -R -u <package>  # remove with orphans",
+          "sudo pacman -R -s <package>  # remove with deps",
+          "sudo pacman -R -n <package>  # remove with config files",
+          "sudo pacman -R -dd <package>  # skip dependency checks"
+        ]
+      },
+      "remove-with-deps": {
+        "aliases": [
+          "remove deps",
+          "uninstall deps",
+          "remove with dependencies",
+          "pacman -Rs",
+          "cascade remove",
+          "kill deps too"
+        ],
+        "description": "Removes a package and its dependencies not required by others",
+        "commands": [
+          "sudo pacman -Rs <package>  # remove with dependencies",
+          "sudo pacman -Rcs <package>  # remove with deps and config",
+          "sudo pacman -Rsu <package>  # remove deps and orphans",
+          "sudo pacman -Rscu <package>  # full clean removal"
+        ]
+      },
+      "update": {
+        "aliases": [
+          "update",
+          "up",
+          "upgrade",
+          "pacman update",
+          "update packages",
+          "upgrade packages",
+          "refresh packages",
+          "update all",
+          "pacman -Syu",
+          "get latest",
+          "full upgrade"
+        ],
+        "description": "Synchronizes repositories and updates all packages",
+        "commands": [
+          "sudo pacman -Syu  # sync and update all packages",
+          "sudo pacman -Syu --noconfirm  # auto yes",
+          "sudo pacman -Syu --download-timeout=10  # timeout setting",
+          "sudo pacman -Syu --ignore <package>  # skip specific package",
+          "sudo pacman -Syu --overwrite <pattern>  # overwrite conflicts"
+        ]
+      },
+      "sync": {
+        "aliases": [
+          "sync",
+          "refresh",
+          "pacman -Sy",
+          "update cache",
+          "refresh repos",
+          "update package list",
+          "resync"
+        ],
+        "description": "Synchronizes the local package database with the repositories",
+        "commands": [
+          "sudo pacman -Sy  # sync databases",
+          "sudo pacman -Syy  # force refresh all repos",
+          "sudo pacman -Syy --noconfirm  # auto yes",
+          "sudo pacman -Fy  # update file database"
+        ]
+      },
+      "search": {
+        "aliases": [
+          "search",
+          "find",
+          "find package",
+          "look for",
+          "pacman search",
+          "search package",
+          "find software",
+          "what is this",
+          "pacman -Ss"
+        ],
+        "description": "Searches for packages by name or description",
+        "commands": [
+          "pacman -Ss <term>  # search packages",
+          "pacman -Ss <term1> <term2>  # multiple terms",
+          "pacman -Ss '^<term>'  # regex search",
+          "pacman -Ss --color=always <term>  # with colors",
+          "pacman -Ss <term> | grep -i <pattern>  # filter results"
+        ]
+      },
+      "info": {
+        "aliases": [
+          "info",
+          "package info",
+          "details",
+          "what is this",
+          "pacman info",
+          "show info",
+          "package details",
+          "pacman -Si"
+        ],
+        "description": "Shows detailed information about a package",
+        "commands": [
+          "pacman -Si <package>  # info from repo",
+          "pacman -Qi <package>  # info from installed",
+          "pacman -Qii <package>  # detailed installed info",
+          "pacman -Qi <package> | grep -E 'Name|Version|Description'  # key info"
+        ]
+      },
+      "list": {
+        "aliases": [
+          "list",
+          "list packages",
+          "show packages",
+          "what's installed",
+          "pacman list",
+          "show all",
+          "installed packages",
+          "pacman -Q"
+        ],
+        "description": "Lists installed or available packages",
+        "commands": [
+          "pacman -Q  # list all installed packages",
+          "pacman -Q --explicit  # explicitly installed",
+          "pacman -Q --deps  # installed as dependencies",
+          "pacman -Q --foreign  # packages from AUR/other",
+          "pacman -Q --unrequired  # packages not required by any",
+          "pacman -Q -q  # quiet output (names only)",
+          "pacman -Sl  # list all available packages"
+        ]
+      },
+      "orphans": {
+        "aliases": [
+          "orphans",
+          "unused deps",
+          "remove orphans",
+          "clean orphans",
+          "pacman orphans",
+          "find orphans"
+        ],
+        "description": "Lists packages installed as dependencies but not required by any other package",
+        "commands": [
+          "pacman -Qdt  # list orphan packages",
+          "pacman -Qtdq  # quiet output",
+          "pacman -Qdt  # check orphans",
+          "sudo pacman -Rns $(pacman -Qdtq)  # remove all orphans",
+          "pacman -Qdt | wc -l  # count orphans"
+        ]
+      },
+      "clean": {
+        "aliases": [
+          "clean",
+          "pacman clean",
+          "clean cache",
+          "clear cache",
+          "purge cache",
+          "clean all",
+          "empty cache",
+          "free space"
+        ],
+        "description": "Cleans the package cache (downloaded packages)",
+        "commands": [
+          "sudo pacman -Sc  # clean cache, keep recent",
+          "sudo pacman -Scc  # clean all cache",
+          "sudo pacman -Scc --noconfirm  # auto yes",
+          "du -sh /var/cache/pacman/pkg/  # check cache size",
+          "sudo paccache -r  # remove all but 3 versions",
+          "sudo paccache -rk1  # keep only latest version"
+        ]
+      },
+      "files": {
+        "aliases": [
+          "files",
+          "list files",
+          "package files",
+          "what files",
+          "pacman -Ql",
+          "show files"
+        ],
+        "description": "Lists all files belonging to a package",
+        "commands": [
+          "pacman -Ql <package>  # list files in package",
+          "pacman -Ql <package> | grep <pattern>  # filter files",
+          "pacman -Fl <package>  # list files from repo",
+          "pacman -Qlk <package>  # verify package files"
+        ]
+      },
+      "owns": {
+        "aliases": [
+          "owns",
+          "which package",
+          "who owns",
+          "find package",
+          "pacman -Qo",
+          "file belongs to"
+        ],
+        "description": "Shows which package owns a specific file",
+        "commands": [
+          "pacman -Qo <file>  # find owner of file",
+          "pacman -Qo /usr/bin/<command>  # find command owner",
+          "pacman -Qo --query <file>  # query file",
+          "pacman -F <file>  # search for file in repos"
+        ]
+      },
+      "downgrade": {
+        "aliases": [
+          "downgrade",
+          "rollback",
+          "go back",
+          "revert",
+          "undo update",
+          "pacman downgrade",
+          "oops",
+          "my bad",
+          "take it back"
+        ],
+        "description": "Downgrades a package to a previous version",
+        "commands": [
+          "sudo downgrade <package>  # interactive downgrade",
+          "sudo pacman -U /var/cache/pacman/pkg/<package>-old-version.pkg.tar.zst  # manual downgrade",
+          "sudo pacman -U <package>-old-version.pkg.tar.zst"
+        ]
+      },
+      "paccache": {
+        "aliases": [
+          "paccache",
+          "clean cache",
+          "cache clean",
+          "clean old packages"
+        ],
+        "description": "Cleans the package cache keeping a number of versions",
+        "commands": [
+          "sudo paccache -r  # keep last 3 versions",
+          "sudo paccache -rk1  # keep only latest",
+          "sudo paccache -ruk0  # remove all uninstalled",
+          "sudo paccache -v  # verbose output"
+        ]
+      },
+      "pacdiff": {
+        "aliases": [
+          "pacdiff",
+          "fix configs",
+          "check configs",
+          "config conflicts"
+        ],
+        "description": "Checks for and helps resolve .pacnew/.pacsave config files",
+        "commands": [
+          "sudo pacdiff  # interactive config merge",
+          "sudo pacdiff -o  # open in vim",
+          "sudo find /etc -name '*.pacnew'  # find pacnew files manually"
+        ]
+      },
+      "check": {
+        "aliases": [
+          "check",
+          "verify packages",
+          "check integrity",
+          "pacman -Qk",
+          "verify"
+        ],
+        "description": "Checks installed packages for broken files",
+        "commands": [
+          "pacman -Qk  # check all packages",
+          "pacman -Qk <package>  # check specific",
+          "pacman -Qkk <package>  # detailed check",
+          "pacman -Qk | grep -i missing  # find missing files"
+        ]
+      },
+      "upgrade-now": {
+        "aliases": [
+          "upgrade-now",
+          "upgrade all",
+          "full upgrade",
+          "pacman -Syu"
+        ],
+        "description": "Full system upgrade with sync",
+        "commands": [
+          "sudo pacman -Syu  # full upgrade",
+          "sudo pacman -Syu --noconfirm  # auto yes",
+          "sudo pacman -Syu --ignore <package>  # skip package",
+          "sudo pacman -Syu && echo 'Upgrade completed!'"
+        ]
+      },
+      "query": {
+        "aliases": ["query", "query package", "package query", "pacman -Q"],
+        "description": "Queries the installed package database",
+        "commands": [
+          "pacman -Q  # all packages",
+          "pacman -Q -e  # explicitly installed",
+          "pacman -Q -d  # dependencies",
+          "pacman -Q -o <file>  # file owner",
+          "pacman -Q -m  # foreign packages",
+          "pacman -Q -n  # native packages",
+          "pacman -Q -t  # unrequired packages"
+        ]
+      },
+      "database": {
+        "aliases": [
+          "database",
+          "db",
+          "pacman -D",
+          "mark dependency",
+          "mark explicit"
+        ],
+        "description": "Modifies the package database (mark as dependency/explicit)",
+        "commands": [
+          "sudo pacman -D --asdeps <package>  # mark as dependency",
+          "sudo pacman -D --asexplicit <package>  # mark as explicitly installed",
+          "sudo pacman -D --noconfirm --asdeps <package>  # auto yes"
+        ]
+      },
+      "readme": {
+        "aliases": ["readme", "doc", "man", "pacman help", "pacman -h"],
+        "description": "Shows pacman help and documentation",
+        "commands": [
+          "pacman -h  # help",
+          "man pacman  # full manual",
+          "pacman -S --help  # help for install"
+        ]
+      },
+      "mirrors": {
+        "aliases": [
+          "mirrors",
+          "update mirrors",
+          "rank mirrors",
+          "pacman mirrors"
+        ],
+        "description": "Manages mirror lists for pacman",
+        "commands": [
+          "sudo pacman-mirrors --country all --api --protocol https  # rank mirrors",
+          "sudo pacman-mirrors --fasttrack 5  # select 5 fastest mirrors",
+          "sudo pacman-mirrors --geoip  # use geoip",
+          "sudo pacman-mirrors --continent  # select continent"
+        ]
+      }
+    }
+  }
+}

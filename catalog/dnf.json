@@ -1,0 +1,579 @@
+{
+  "dnf": {
+    "program_description": "DNF - Dandified YUM (Fedora package manager)",
+    "actions": {
+      "install": {
+        "aliases": [
+          "install",
+          "i",
+          "dnf install",
+          "get package",
+          "install package",
+          "add package",
+          "get app",
+          "install app",
+          "need this",
+          "gimme",
+          "dnf i",
+          "setup",
+          "install program",
+          "grab package",
+          "dnf add"
+        ],
+        "description": "Installs a package from the enabled repositories",
+        "commands": [
+          "sudo dnf install <package>  # install package",
+          "sudo dnf install <package1> <package2>  # install multiple",
+          "sudo dnf install -y <package>  # auto yes",
+          "sudo dnf install --skip-broken <package>  # skip broken deps",
+          "sudo dnf install --enablerepo=<repo> <package>  # from specific repo",
+          "sudo dnf install --exclude=<package> <package>  # exclude deps",
+          "sudo dnf install --allowerasing <package>  # allow erasing conflicting",
+          "sudo dnf install --best --allowerasing <package>  # best match",
+          "sudo dnf install ./<package>.rpm  # install local rpm",
+          "sudo dnf install <url>.rpm  # install from URL"
+        ]
+      },
+      "remove": {
+        "aliases": [
+          "remove",
+          "rm",
+          "uninstall",
+          "delete",
+          "dnf remove",
+          "remove package",
+          "delete package",
+          "get rid of",
+          "kill package",
+          "uninstall package",
+          "bye package",
+          "dnf rm"
+        ],
+        "description": "Removes a package from the system",
+        "commands": [
+          "sudo dnf remove <package>  # remove package",
+          "sudo dnf remove <package1> <package2>  # remove multiple",
+          "sudo dnf remove -y <package>  # auto yes",
+          "sudo dnf remove --noautoremove <package>  # keep deps",
+          "sudo dnf remove --duplicates  # remove duplicate packages",
+          "sudo dnf remove --exclude=<package> <package>"
+        ]
+      },
+      "autoremove": {
+        "aliases": [
+          "autoremove",
+          "clean deps",
+          "remove orphans",
+          "remove unused",
+          "clean dependencies",
+          "dnf autoremove",
+          "cleanup",
+          "clean old deps"
+        ],
+        "description": "Removes packages that were installed as dependencies and are no longer needed",
+        "commands": [
+          "sudo dnf autoremove  # remove unused dependencies",
+          "sudo dnf autoremove -y  # auto yes",
+          "sudo dnf autoremove --remove-unneeded  # more thorough"
+        ]
+      },
+      "update": {
+        "aliases": [
+          "update",
+          "up",
+          "upgrade",
+          "dnf update",
+          "update packages",
+          "upgrade packages",
+          "refresh packages",
+          "update all",
+          "dnf up",
+          "get latest"
+        ],
+        "description": "Updates all packages to their latest available versions",
+        "commands": [
+          "sudo dnf upgrade  # upgrade all packages",
+          "sudo dnf update  # same as upgrade",
+          "sudo dnf upgrade -y  # auto yes",
+          "sudo dnf upgrade <package>  # update specific package",
+          "sudo dnf upgrade --refresh  # refresh cache first",
+          "sudo dnf upgrade --skip-broken  # skip problematic",
+          "sudo dnf update --exclude=<package>  # exclude specific",
+          "sudo dnf upgrade --security  # security updates only",
+          "sudo dnf upgrade --bugfix  # bugfix updates only",
+          "sudo dnf upgrade --enhancement  # enhancement updates only"
+        ]
+      },
+      "check-update": {
+        "aliases": [
+          "check-update",
+          "check updates",
+          "what's new",
+          "updates available",
+          "dnf check-update",
+          "list updates",
+          "show updates"
+        ],
+        "description": "Checks for available package updates without installing them",
+        "commands": [
+          "dnf check-update  # check for updates",
+          "dnf check-update --refresh  # force cache refresh",
+          "dnf check-update --security  # security updates only",
+          "dnf check-update --bugfix  # bugfix updates only"
+        ]
+      },
+      "search": {
+        "aliases": [
+          "search",
+          "find",
+          "find package",
+          "look for",
+          "dnf search",
+          "search package",
+          "find software",
+          "what is this"
+        ],
+        "description": "Searches for packages by name or description",
+        "commands": [
+          "dnf search <term>  # search packages",
+          "dnf search all <term>  # search everything",
+          "dnf search --tags <tag>  # search by tags",
+          "dnf search <term1> <term2>  # multiple terms",
+          "dnf search -v <term>  # verbose output"
+        ]
+      },
+      "info": {
+        "aliases": [
+          "info",
+          "package info",
+          "details",
+          "what is this",
+          "dnf info",
+          "show info",
+          "package details"
+        ],
+        "description": "Shows detailed information about a package",
+        "commands": [
+          "dnf info <package>  # show package details",
+          "dnf info --installed <package>  # info for installed",
+          "dnf info --available <package>  # info from repos",
+          "dnf info -v <package>  # verbose info",
+          "dnf repoquery --info <package>  # alternative"
+        ]
+      },
+      "list": {
+        "aliases": [
+          "list",
+          "list packages",
+          "show packages",
+          "what's installed",
+          "dnf list",
+          "show all",
+          "installed packages",
+          "available packages"
+        ],
+        "description": "Lists installed or available packages",
+        "commands": [
+          "dnf list  # all installed and available",
+          "dnf list --installed  # only installed",
+          "dnf list --available  # only available",
+          "dnf list --upgrades  # upgradeable packages",
+          "dnf list --obsoletes  # obsoleted packages",
+          "dnf list --recent  # recently added packages",
+          "dnf list <glob>  # list matching glob pattern"
+        ]
+      },
+      "provides": {
+        "aliases": [
+          "provides",
+          "what provides",
+          "which package",
+          "find file",
+          "what has",
+          "dnf provides"
+        ],
+        "description": "Finds which package provides a specific file or capability",
+        "commands": [
+          "dnf provides <file>  # find package providing file",
+          "dnf provides */bin/<command>  # find by command",
+          "dnf provides <capability>  # find by capability",
+          "dnf provides --cacheonly <file>  # use cache only"
+        ]
+      },
+      "reinstall": {
+        "aliases": [
+          "reinstall",
+          "reinstall package",
+          "fix package",
+          "reinstall app",
+          "dnf reinstall"
+        ],
+        "description": "Reinstalls a package (fixes broken installations)",
+        "commands": [
+          "sudo dnf reinstall <package>  # reinstall package",
+          "sudo dnf reinstall -y <package>  # auto yes",
+          "sudo dnf reinstall --enablerepo=<repo> <package>"
+        ]
+      },
+      "downgrade": {
+        "aliases": [
+          "downgrade",
+          "rollback",
+          "go back",
+          "revert",
+          "undo update",
+          "dnf downgrade",
+          "oops",
+          "my bad",
+          "take it back"
+        ],
+        "description": "Downgrades a package to a previous version",
+        "commands": [
+          "sudo dnf downgrade <package>  # downgrade package",
+          "sudo dnf downgrade <package>-<version>  # specific version",
+          "sudo dnf downgrade -y <package>  # auto yes",
+          "sudo dnf downgrade --allowerasing <package>"
+        ]
+      },
+      "distro-sync": {
+        "aliases": [
+          "distro-sync",
+          "sync distro",
+          "align packages",
+          "sync all",
+          "dnf distro-sync"
+        ],
+        "description": "Synchronizes installed packages with the repository (upgrades/downgrades to match)",
+        "commands": [
+          "sudo dnf distro-sync  # sync all packages",
+          "sudo dnf distro-sync <package>  # sync specific",
+          "sudo dnf distro-sync -y  # auto yes"
+        ]
+      },
+      "system-upgrade": {
+        "aliases": [
+          "system-upgrade",
+          "dist-upgrade",
+          "release upgrade",
+          "fedora upgrade",
+          "version upgrade",
+          "dnf system-upgrade"
+        ],
+        "description": "Upgrades Fedora to a new release version",
+        "commands": [
+          "sudo dnf system-upgrade download --releasever=<version>  # download packages",
+          "sudo dnf system-upgrade reboot  # reboot to apply",
+          "sudo dnf system-upgrade clean  # clean after upgrade",
+          "sudo dnf system-upgrade download --releasever=40  # upgrade to Fedora 40"
+        ]
+      },
+      "group-install": {
+        "aliases": [
+          "group install",
+          "group add",
+          "install group",
+          "install group packages",
+          "dnf group install",
+          "install software group",
+          "install group"
+        ],
+        "description": "Installs a group of packages (like Development Tools)",
+        "commands": [
+          "sudo dnf group install <group>  # install group",
+          "sudo dnf group install --with-optional <group>  # include optional",
+          "sudo dnf group install --without-optional <group>  # exclude optional",
+          "sudo dnf group install -y <group>  # auto yes",
+          "sudo dnf group install 'Development Tools'  # with spaces"
+        ]
+      },
+      "group-list": {
+        "aliases": [
+          "group list",
+          "list groups",
+          "show groups",
+          "groups",
+          "dnf group list",
+          "what groups"
+        ],
+        "description": "Lists available package groups",
+        "commands": [
+          "dnf group list  # all groups",
+          "dnf group list --installed  # installed groups",
+          "dnf group list --available  # available groups",
+          "dnf group list --hidden  # include hidden"
+        ]
+      },
+      "group-info": {
+        "aliases": [
+          "group info",
+          "group details",
+          "show group",
+          "dnf group info"
+        ],
+        "description": "Shows detailed information about a package group",
+        "commands": [
+          "dnf group info <group>  # group details",
+          "dnf group info --verbose <group>  # verbose"
+        ]
+      },
+      "group-remove": {
+        "aliases": [
+          "group remove",
+          "remove group",
+          "group delete",
+          "dnf group remove"
+        ],
+        "description": "Removes a package group and its packages",
+        "commands": [
+          "sudo dnf group remove <group>  # remove group",
+          "sudo dnf group remove -y <group>  # auto yes"
+        ]
+      },
+      "clean": {
+        "aliases": [
+          "clean",
+          "dnf clean",
+          "clean cache",
+          "clear cache",
+          "purge cache",
+          "clean all",
+          "empty cache",
+          "free space"
+        ],
+        "description": "Cleans the DNF cache and metadata",
+        "commands": [
+          "sudo dnf clean all  # clean everything",
+          "sudo dnf clean packages  # clean downloaded packages",
+          "sudo dnf clean metadata  # clean metadata",
+          "sudo dnf clean dbcache  # clean cache database",
+          "sudo dnf clean expire-cache  # expire cache",
+          "sudo dnf clean plugins  # clean plugin data"
+        ]
+      },
+      "makecache": {
+        "aliases": [
+          "makecache",
+          "refresh cache",
+          "refresh metadata",
+          "update cache",
+          "dnf makecache"
+        ],
+        "description": "Generates or updates the DNF metadata cache",
+        "commands": [
+          "sudo dnf makecache  # generate cache",
+          "sudo dnf makecache --refresh  # force refresh",
+          "sudo dnf makecache --timer  # for timer jobs"
+        ]
+      },
+      "repolist": {
+        "aliases": [
+          "repolist",
+          "list repos",
+          "show repos",
+          "repositories",
+          "dnf repolist",
+          "what repos"
+        ],
+        "description": "Lists enabled or all repositories",
+        "commands": [
+          "dnf repolist  # enabled repos only",
+          "dnf repolist all  # all repos",
+          "dnf repolist --disabled  # disabled repos",
+          "dnf repolist --enabled  # enabled repos",
+          "dnf repolist -v  # verbose output",
+          "dnf repoinfo <repo>  # repo details"
+        ]
+      },
+      "repoquery": {
+        "aliases": ["repoquery", "query repo", "search repo", "dnf repoquery"],
+        "description": "Queries repositories for package information",
+        "commands": [
+          "dnf repoquery <package>  # query package",
+          "dnf repoquery --installed <package>  # installed only",
+          "dnf repoquery --available <package>  # available only",
+          "dnf repoquery -l <package>  # list files in package",
+          "dnf repoquery -R <package>  # show dependencies",
+          "dnf repoquery --requires <package>  # requirements",
+          "dnf repoquery --provides <package>  # provides",
+          "dnf repoquery --conflicts <package>  # conflicts",
+          "dnf repoquery --obsoletes <package>  # obsoletes",
+          "dnf repoquery --info <package>  # show info"
+        ]
+      },
+      "history": {
+        "aliases": [
+          "history",
+          "dnf history",
+          "transaction history",
+          "show history",
+          "what i did"
+        ],
+        "description": "Shows the transaction history of DNF",
+        "commands": [
+          "dnf history  # show all transactions",
+          "dnf history <id>  # show specific transaction",
+          "dnf history info <id>  # detailed info",
+          "dnf history undo <id>  # undo transaction",
+          "dnf history rollback <id>  # rollback to transaction"
+        ]
+      },
+      "mark": {
+        "aliases": [
+          "mark",
+          "keep package",
+          "protect package",
+          "dnf mark",
+          "mark as important"
+        ],
+        "description": "Marks a package to be kept (prevents autoremove)",
+        "commands": [
+          "sudo dnf mark install <package>  # mark as manually installed",
+          "sudo dnf mark remove <package>  # mark as dependency",
+          "sudo dnf mark group <group>  # mark group"
+        ]
+      },
+      "reposync": {
+        "aliases": ["reposync", "sync repo", "mirror repo", "download repo"],
+        "description": "Downloads all packages from a repository",
+        "commands": [
+          "sudo reposync --repo=<repo>  # sync repository",
+          "sudo reposync --download-metadata  # with metadata",
+          "sudo reposync --newest-only  # only newest",
+          "sudo reposync --download-path=<path>  # specify path",
+          "sudo reposync -g  # download comps groups"
+        ]
+      },
+      "download": {
+        "aliases": [
+          "download",
+          "dnf download",
+          "get rpm",
+          "download rpm",
+          "download package only"
+        ],
+        "description": "Downloads a package RPM without installing it",
+        "commands": [
+          "dnf download <package>  # download package",
+          "dnf download --destdir=<dir> <package>  # specify directory",
+          "dnf download --urls <package>  # show URLs only",
+          "dnf download --arch=x86_64 <package>  # specific arch",
+          "dnf download --source <package>  # download source RPM"
+        ]
+      },
+      "versionlock": {
+        "aliases": [
+          "versionlock",
+          "lock package",
+          "pin version",
+          "prevent update"
+        ],
+        "description": "Locks packages to specific versions (prevents updates)",
+        "commands": [
+          "sudo dnf versionlock add <package>  # lock package",
+          "sudo dnf versionlock add <package>-<version>  # lock specific version",
+          "sudo dnf versionlock delete <package>  # unlock package",
+          "sudo dnf versionlock list  # show locked packages",
+          "sudo dnf versionlock clear  # clear all locks"
+        ]
+      },
+      "copr": {
+        "aliases": ["copr", "add copr", "copr repo", "community repo"],
+        "description": "Manages Copr repositories (third-party packages)",
+        "commands": [
+          "sudo dnf copr enable <user>/<project>  # enable COPR",
+          "sudo dnf copr disable <user>/<project>  # disable COPR",
+          "sudo dnf copr remove <user>/<project>  # remove COPR",
+          "sudo dnf copr list  # list enabled COPRs",
+          "sudo dnf copr search <term>  # search COPRs"
+        ]
+      },
+      "config-manager": {
+        "aliases": ["config-manager", "add repo", "remove repo", "repo add"],
+        "description": "Manages repository configuration",
+        "commands": [
+          "sudo dnf config-manager --add-repo <url>  # add repository",
+          "sudo dnf config-manager --set-enabled <repo>  # enable repo",
+          "sudo dnf config-manager --set-disabled <repo>  # disable repo",
+          "sudo dnf config-manager --save  # save settings",
+          "sudo dnf config-manager --dump  # dump config"
+        ]
+      },
+      "needs-restarting": {
+        "aliases": [
+          "needs-restarting",
+          "need restart",
+          "pending restart",
+          "should reboot"
+        ],
+        "description": "Shows if system needs a reboot or services to be restarted after updates",
+        "commands": [
+          "dnf needs-restarting  # check if reboot needed",
+          "dnf needs-restarting -s  # show services needing restart"
+        ]
+      },
+      "builddep": {
+        "aliases": [
+          "builddep",
+          "build deps",
+          "install build deps",
+          "dnf builddep"
+        ],
+        "description": "Installs build dependencies for a package",
+        "commands": [
+          "sudo dnf builddep <package>  # install build deps",
+          "sudo dnf builddep --spec <file.spec>  # from spec file"
+        ]
+      },
+      "debuginfo-install": {
+        "aliases": [
+          "debuginfo",
+          "debug symbols",
+          "install debug",
+          "dnf debuginfo"
+        ],
+        "description": "Installs debuginfo packages for debugging",
+        "commands": [
+          "sudo dnf debuginfo-install <package>  # install debug info",
+          "sudo dnf debuginfo-install -y <package>  # auto yes"
+        ]
+      },
+      "swap": {
+        "aliases": ["swap", "replace package", "swap package", "dnf swap"],
+        "description": "Removes one package and installs another in a single transaction",
+        "commands": [
+          "sudo dnf swap <package1> <package2>  # swap packages",
+          "sudo dnf swap -y <package1> <package2>  # auto yes"
+        ]
+      },
+      "module": {
+        "aliases": ["module", "dnf module", "enable module", "module list"],
+        "description": "Manages modular packages (streams/profiles)",
+        "commands": [
+          "dnf module list  # list modules",
+          "dnf module info <module>  # module info",
+          "sudo dnf module install <module>:<stream>/<profile>  # install module",
+          "sudo dnf module enable <module>:<stream>  # enable module",
+          "sudo dnf module disable <module>  # disable module",
+          "sudo dnf module reset <module>  # reset module"
+        ]
+      },
+      "advisory": {
+        "aliases": [
+          "advisory",
+          "security advisory",
+          "update advisory",
+          "dnf advisory"
+        ],
+        "description": "Displays security and bugfix advisories",
+        "commands": [
+          "dnf advisory list  # list advisories",
+          "dnf advisory info <id>  # show advisory details",
+          "dnf advisory list --security  # security advisories",
+          "dnf advisory list --bugfix  # bugfix advisories",
+          "dnf advisory list --enhancement  # enhancement advisories",
+          "sudo dnf upgrade --advisory=<id>  # upgrade with advisory"
+        ]
+      }
+    }
+  }
+}

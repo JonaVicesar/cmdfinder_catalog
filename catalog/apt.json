@@ -1,0 +1,228 @@
+{
+  "apt": {
+    "program_description": "APT - Debian/Ubuntu package manager",
+    "actions": {
+      "install": {
+        "aliases": [
+          "install",
+          "get package",
+          "apt install",
+          "add package",
+          "install software",
+          "get app",
+          "download install",
+          "install program",
+          "need this"
+        ],
+        "description": "Installs a package from the repository",
+        "commands": [
+          "sudo apt install <package>  # install package ",
+          "sudo apt install <package1> <package2>  # install multiple ",
+          "sudo apt install -y <package>  # auto yes to prompts",
+          "sudo apt install --reinstall <package>  # reinstall package",
+          "sudo apt install ./<package>.deb  # install local .deb file",
+          "sudo apt install -f  # fix broken dependencies"
+        ]
+      },
+      "remove": {
+        "aliases": [
+          "remove",
+          "uninstall",
+          "delete package",
+          "apt remove",
+          "remove software",
+          "get rid of",
+          "delete app",
+          "uninstall program",
+          "kill package"
+        ],
+        "description": "Removes a package but keeps configuration files",
+        "commands": [
+          "sudo apt remove <package>  # remove package ",
+          "sudo apt remove <package1> <package2>  # remove multiple",
+          "sudo apt remove -y <package>  # auto yes"
+        ]
+      },
+      "purge": {
+        "aliases": [
+          "purge",
+          "complete remove",
+          "nuke package",
+          "remove configs",
+          "delete all",
+          "clean remove",
+          "eradicate"
+        ],
+        "description": "Completely removes a package including configuration files",
+        "commands": [
+          "sudo apt purge <package>  # remove package and configs ",
+          "sudo apt purge <package1> <package2>  # purge multiple",
+          "sudo apt purge -y <package>  # auto yes"
+        ]
+      },
+      "update": {
+        "aliases": [
+          "update",
+          "refresh",
+          "apt update",
+          "update packages list",
+          "refresh repos",
+          "resync",
+          "get new packages"
+        ],
+        "description": "Updates the package list from repositories",
+        "commands": [
+          "sudo apt update  # update package lists ",
+          "sudo apt update && sudo apt upgrade -y  # update and upgrade",
+          "sudo apt update --allow-insecure-repositories  # with insecure repos"
+        ]
+      },
+      "upgrade": {
+        "aliases": [
+          "upgrade",
+          "update packages",
+          "apt upgrade",
+          "upgrade all",
+          "install updates",
+          "refresh programs",
+          "update everything",
+          "refresh"
+        ],
+        "description": "Upgrades all installed packages to the latest versions",
+        "commands": [
+          "sudo apt upgrade -y  # upgrade all packages ",
+          "sudo apt upgrade <package>  # upgrade specific package",
+          "sudo apt upgrade --dry-run  # simulate upgrade",
+          "sudo apt upgrade --allow-downgrades  # allow downgrades"
+        ]
+      },
+      "autoremove": {
+        "aliases": [
+          "autoremove",
+          "clean dependencies",
+          "remove unused",
+          "apt autoremove",
+          "clean packages",
+          "remove orphans",
+          "cleanup"
+        ],
+        "description": "Removes packages that were installed as dependencies and are no longer needed",
+        "commands": [
+          "sudo apt autoremove  # remove unused dependencies ",
+          "sudo apt autoremove -y  # auto yes",
+          "sudo apt autoremove --purge  # remove with configs"
+        ]
+      },
+      "search": {
+        "aliases": [
+          "search",
+          "find package",
+          "look for",
+          "apt search",
+          "find software",
+          "search repository"
+        ],
+        "description": "Searches for packages in the repository",
+        "commands": [
+          "apt search <keyword>  # search packages ",
+          "apt search --names-only <keyword>  # search only names",
+          "apt search <keyword> | grep -i <pattern>  # filter results"
+        ]
+      },
+      "show": {
+        "aliases": [
+          "show",
+          "info",
+          "package info",
+          "apt show",
+          "what is this",
+          "details"
+        ],
+        "description": "Shows detailed information about a package",
+        "commands": [
+          "apt show <package>  # show package details ",
+          "apt show -a <package>  # show all versions",
+          "apt show <package> | grep -E 'Version|Description'  # key info"
+        ]
+      },
+      "list": {
+        "aliases": [
+          "list",
+          "list installed",
+          "apt list",
+          "show packages",
+          "what's installed",
+          "installed packages"
+        ],
+        "description": "Lists packages by status (installed, upgradeable, etc.)",
+        "commands": [
+          "apt list --installed  # list all installed packages ",
+          "apt list --upgradeable  # list packages with updates available ",
+          "apt list <pattern>  # list packages matching pattern",
+          "apt list | grep <package>  # filter results"
+        ]
+      },
+      "dist-upgrade": {
+        "aliases": [
+          "dist upgrade",
+          "distro upgrade",
+          "full upgrade",
+          "release upgrade",
+          "major upgrade"
+        ],
+        "description": "Performs a distribution upgrade (handles dependencies intelligently)",
+        "commands": [
+          "sudo apt dist-upgrade  # distribution upgrade ",
+          "sudo apt dist-upgrade -y  # auto yes",
+          "sudo apt dist-upgrade --dry-run  # simulate"
+        ]
+      },
+      "add-repository": {
+        "aliases": [
+          "add repo",
+          "add ppa",
+          "add repository",
+          "apt add repo",
+          "add source",
+          "ppa"
+        ],
+        "description": "Adds a new repository/PPA",
+        "commands": [
+          "sudo add-apt-repository <ppa>  # add PPA ",
+          "sudo add-apt-repository -y <ppa>  # auto yes",
+          "sudo add-apt-repository --remove <ppa>  # remove PPA",
+          "sudo add-apt-repository 'deb http://repo.com/ubuntu jammy main'  # add custom repo"
+        ]
+      },
+      "download": {
+        "aliases": [
+          "download",
+          "download deb",
+          "get deb",
+          "download package",
+          "download only"
+        ],
+        "description": "Downloads a package .deb file without installing",
+        "commands": [
+          "sudo apt download <package>  # download .deb file ",
+          "sudo apt download <package> -o dir::cache=./  # download to current dir"
+        ]
+      },
+      "source": {
+        "aliases": [
+          "source",
+          "get source",
+          "download source",
+          "source code",
+          "apt source"
+        ],
+        "description": "Downloads the source code of a package",
+        "commands": [
+          "sudo apt source <package>  # download source ",
+          "sudo apt source --download-only <package>  # only download",
+          "sudo apt source --compile <package>  # build from source"
+        ]
+      }
+    }
+  }
+}
